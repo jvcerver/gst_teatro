@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document */
+#capacontenedora{
+	background-color:#6F6;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: -480px;
+	width: 960px;
+	position:absolute;
+	top: 0px;
+	left:50%;
+	height:900px;
+	}
+#capatitulo{
+	background-color:#06F;
+	position:relative;
+	margin-top: 0px;
+	height:150px;
+	}
+#capamenu{
+	background-color:#F36;
+	position:relative;
+	height:auto;
+	}
+#capadetalles{		
+	background-color:#99F;
+	position:relative;
+	height:120px;
+	width:150px;
+	margin-left:-60px;	
+	left:50%;	
+}
+#capadetalles2{		
+	background-color:#99F;
+	position:relative;
+	height:120px;
+	width:150px;
+}
+#capacontenedoraobrasquery{	
+	background-color:#99F;
+	position:relative;
+	height:600px;
+	width:300px;
+	margin-left:-150px;	
+	left:50%;	
+}
+#capaobraindividual{
+	background-color:#CF3;
+	position:relative;
+	height:150px;
+	width:150px;
+	margin-left:-75px;	
+	left:50%;	
+	}
+#imagenobraquery{
+	background:#CFF;
+	width:30px;
+	height:30px;
+	/*src:"";*/
+}
+#capacalendario{
+	background-color:#63C;
+	position:relative;
+	height:350px;
+	width:220px;
+	margin-left:0px;	
+	margin-top:-16px;
+	top:0px;		
+}
+#contenedoraCapaCalendario{
+	background-color:#CF6;
+	position:relative;
+	height:350px;
+	width:960px;
+	margin-left:0px;	
+	margin-top:-16px;
+	top:0px;		
+	}
+
