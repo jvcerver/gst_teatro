@@ -1,3 +1,4 @@
+drop database if exists teatro;
 create database teatro;
 use teatro;
 
@@ -27,9 +28,9 @@ create table butaca
 	(fila int not null,
 	numero int not null,
 	seccion int not null,
-	primary key (fila,numero),
-	foreign key seccion references seccion (codigo)
-	on delete cascade on update cascade
+	primary key (fila,numero,seccion),
+	foreign key (seccion) references seccion (codigo)
+	on delete cascade on update cascade)
 	engine = innodb;
 
 create table reserva
@@ -40,11 +41,10 @@ create table reserva
 	fila int not null,
 	numero int not null,
 	seccion int not null,
-	foreign key fecha,hora references pase (fecha,hora)
-	on delete no action on update no action
-	--foreign key hora references pase (hora)
-	foreign key fila,numero,seccion references butaca (fila,numero,seccion)
-	on delete no action on update no action
-	engine = innodb);
-	
-	--faltan las claves foraneas
+	index (fecha,hora),
+	foreign key (fecha,hora) references pase (fecha,hora)
+	on delete no action on update no action,
+	index (fila,numero,seccion),
+	foreign key (fila,numero,seccion) references butaca (fila,numero,seccion)
+	on delete no action on update no action)
+	engine = innodb;
