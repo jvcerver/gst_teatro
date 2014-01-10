@@ -33,13 +33,18 @@ create table butaca
 	engine = innodb;
 
 create table reserva
-	(cod_reserva int auto_increment primary key not null,
+	(no_entrada int auto_increment primary key not null,
+	dni text not null,
 	fecha date not null,
 	hora time not null,
 	fila int not null,
 	numero int not null,
 	seccion int not null,
-	foreign key fecha references pase (fecha)
+	foreign key fecha,hora references pase (fecha,hora)
 	on delete no action on update no action
+	--foreign key hora references pase (hora)
+	foreign key fila,numero,seccion references butaca (fila,numero,seccion)
+	on delete no action on update no action
+	engine = innodb);
 	
 	--faltan las claves foraneas
