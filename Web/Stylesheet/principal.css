@@ -64,10 +64,11 @@
 	/*src:"";*/
 }
 #capacalendarioyhora{
+	border: 4px solid black;
 	background-color:#63C;
 	position:relative;
 	height:350px;
-	width:220px;
+	width:216px;
 	margin-left:0px;	
 	margin-top:-16px;
 	top:0px;		
@@ -90,7 +91,7 @@
 #capaobras{
 	background-color:#F00;
 	position: absolute;
-	width: 740px;
+	width: 732px;
 	height:350px;	
 	left: 220px;
 }
