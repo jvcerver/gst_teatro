@@ -21,6 +21,7 @@ $NUM_COLUMNAS['ANFITEATRO'] = 18; //Ha de ser un número par, múltiplo de 3
 function crearPlatea($fil, $col){
 	global $SECCIONES;
 	echo "<table>";
+	echo "<tr><td colspan='".($col+4)."'><p class='secciones'>Platea - X€</p></td></tr>";
 	for($f=$fil-1; $f>=0; $f--){
 
 		echo "<tr>";
@@ -41,20 +42,19 @@ function crearPlatea($fil, $col){
 		}
 		echo "</tr>";
 	}
-	echo "<tr><td colspan='".($col+4)."'><p class='secciones'>Platea - X€</p></td></tr>";
 	echo "</table>";	
 }
 
 function crearPalco($numPalco, $fil, $col){
 	global $SECCIONES;
 	echo "<table>";
+	echo "<tr><td colspan='$col'><p class='secciones'>Palco " . $numPalco . " - X€</p></td></tr>";
 	for($f=$fil-1; $f>=0; $f--){
 		echo "<tr>";
 		for($c=$col-1; $c>=0; $c--)
 			elegirTipoButaca($f, $c, $SECCIONES['PALCO'], $numPalco);
 		echo "</tr>";
 	}
-	echo "<tr><td colspan='$col'><p class='secciones'>Palco " . $numPalco . " - X€</p></td></tr>";
 	echo "</table>";	
 }
 

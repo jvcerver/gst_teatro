@@ -11,6 +11,9 @@
 		if (empty($_SESSION['butacasReservadas']))
 			unset($_SESSION['butacasReservadas']);
 	}
+	
+	//Obtener el último día del espectáculo
+	$ultimoDia="20140124"
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -20,6 +23,13 @@
 <title>Obra Individual</title>
 <link href="../Stylesheet/principal.css" rel="stylesheet" type="text/css" />
 <link href="../Stylesheet/butacas.css" rel="stylesheet" type="text/css" />
+<!--Calendario-->
+<link rel="stylesheet" type="text/css" href="../javascript/Calendario/css/jscal2.css" />
+<link rel="stylesheet" type="text/css" href="../javascript/Calendario/css/border-radius.css" />
+<link rel="stylesheet" type="text/css" href="../javascript/Calendario/css/gold/gold.css" />
+<script type="text/javascript" src="../javascript/Calendario/js/jscal2.js"></script>
+<script type="text/javascript" src="../javascript/Calendario/js/lang/es.js"></script>
+<!--Calendario-->
 </head>
 <body>
 	<div id="capacontenedora">
@@ -68,11 +78,26 @@
 					<?php crearPalco(4, $NUM_FILAS['PALCO'], $NUM_COLUMNAS['PALCO']);?>
 				</div>
             </div>
-        	<div id="capacalendarioyhora">               
+        	<div id="capacalendarioyhora">  
+				<div id="capatituloobra">
+					Título de la obra
+				</div> 
+				<!--Calendario-->            
         		<div id="capafechas">
-        		<form>
-            	<input type="text" />
-            	</form>
+			  	  <script type="text/javascript">
+			  	  	Calendar.setup({
+			  	      	cont          : "capafechas",
+			  	      	bottomBar	  : false,
+			  	  		min: <?=date("Ymd");?>, //Primer día seleccionable
+			  	  		max: <?=$ultimoDia;?>, 	//Último día seleccionable
+			  			onSelect      : function() {
+			              	var fecha = document.getElementById("fecha");
+			              	fecha.value = this.selection.print("%d/%m/%Y").join("\n");  
+			  		    },
+	
+			  	  	})
+			  	  </script>
+				  <!--Fecha: <input id="fecha" type="text" disabled/>-->
                 </div>
         		<div id="capahoras">
         		<form>
