@@ -1,5 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
+*{
+	margin:0px;
+	padding:0px;
+	font-family: Helvetica Neue; 
+}
 #capacontenedora{
 	background-color:#6F6;
 	margin-top: 0px;
@@ -9,13 +14,13 @@
 	position:absolute;
 	top: 0px;
 	left:50%;
-	height:900px;
+	height:900px;	
 	}
 #capatitulo{
 	background-color:#06F;
 	position:relative;
 	margin-top: 0px;
-	height:150px;
+	height:200px;
 	}
 #capamenu{
 	background-color:#F36;
@@ -58,7 +63,7 @@
 	height:30px;
 	/*src:"";*/
 }
-#capacalendario{
+#capacalendarioyhora{
 	background-color:#63C;
 	position:relative;
 	height:350px;
@@ -73,7 +78,93 @@
 	height:350px;
 	width:960px;
 	margin-left:0px;	
-	margin-top:-16px;
+	margin-top:50px;
 	top:0px;		
-	}
+}
+#capahoras{	
+	position: relative;
+	width: 50px;
+	top: 55px;
+	left: 45px;
+}
+#capaobras{
+	background-color:#F00;
+	position: absolute;
+	width: 740px;
+	height:350px;	
+	left: 220px;
+}
+#capafechas{	
+	position: relative;
+	width: 50px;
+	top: 55px;
+	left: 45px;
+}
+#capabutton{	
+	position: relative;
+	width: 50px;
+	top: 65px;
+	left: 45px;
+}
+
+/*menú*/
+header{	
+	width:960px;
+	height:200px;
+	background:#CFC;	
+}
+div.contenedor{
+	width: 192px;
+	height: 200px;
+	float:left;
+	transition: height .4s;
+}
+div#uno{
+	background-color: #333;
+}
+div#dos{
+	background-color: #333;
+}
+div#tres{
+	background-color: #333;
+}
+div#cuatro{
+	background-color: #333;
+}
+div#cinco{
+	background-color: #333;
+}
+/*efectos */
+img.icon{
+	display: block;
+	margin:50px auto;
+	background-color: rgba(255,255,255,.15);
+	width:40px;
+	padding:20px;
+	border-radius: 50%;
+	box-shadow: 0px 0px 0px 30px rgba(255,255,255,0);
+	transition:box-shadow .4s;	
+}
+
+p.texto{
+	font-size: 1.2em;
+	color:white;
+	text-align: center;
+	opacity: .6;
+	transition: padding-top .4s;	
+}
+
+div.contenedor:hover{
+	height:234px;
+}
+
+div.contenedor:hover p.texto{
+	padding-top: 20px;
+	opacity: 1;
+	font-size: 1.8em;
+}
+
+div.contenedor:hover img.icon{
+	box-shadow:0px 0px 0px 0px rgba(255,255,255,.6);	
+}
 
