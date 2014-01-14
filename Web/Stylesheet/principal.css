@@ -64,10 +64,12 @@
 	/*src:"";*/
 }
 #capacalendarioyhora{
+	border: 4px solid black;
+	border-right: 0px solid black;
 	background-color:#63C;
 	position:relative;
 	height:350px;
-	width:220px;
+	width:216px;
 	margin-left:0px;	
 	margin-top:-16px;
 	top:0px;		
@@ -84,27 +86,37 @@
 #capahoras{	
 	position: relative;
 	width: 50px;
-	top: 55px;
+	top: 20px;
 	left: 45px;
 }
 #capaobras{
+	border: 4px solid black;
 	background-color:#F00;
 	position: absolute;
-	width: 740px;
+	width: 732px;
 	height:350px;	
 	left: 220px;
 }
+#capatituloobra{
+	margin: 3px;
+	position: relative;
+	top:0px;
+	left:0px;
+	font-size:25px;
+	word-wrap: break-word;
+	text-align:center;
+	color:white;
+}
 #capafechas{	
 	position: relative;
-	width: 50px;
-	top: 55px;
-	left: 45px;
+	top: 5px;
+	left: 0px;
 }
 #capabutton{	
 	position: relative;
 	width: 50px;
-	top: 65px;
-	left: 45px;
+	top: 40px;
+	left: 150px;
 }
 
 /*menú*/

@@ -1,0 +1,57 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+    $(function() {
+      $( "#datepicker" ).datepicker({ 
+		  minDate: "+0m +0d" , 
+		  maxDate: "1/20/2014", //mm/dd/aaaa
+		  firstDay: 1,
+		  dayNamesMin: [ "Do", "Lu", "Mar", "Mié", "Jue", "Vie", "Sa" ],
+		  monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+	  });
+    });
+  </script>
+  
+ <!--Calendario-->
+ <link rel="stylesheet" type="text/css" href="javascript/Calendario/css/jscal2.css" />
+ <link rel="stylesheet" type="text/css" href="javascript/Calendario/css/border-radius.css" />
+ <link rel="stylesheet" type="text/css" href="javascript/Calendario/css/gold/gold.css" />
+ <script type="text/javascript" src="javascript/Calendario/js/jscal2.js"></script>
+ <script type="text/javascript" src="javascript/Calendario/js/lang/es.js"></script>
+</head>
+<body>
+ 
+<p>Fecha: <input type="text" id="datepicker"></p>
+
+
+
+  <!-- element that will contain the calendar -->
+  <div id="calendario">
+	  <script type="text/javascript">
+	  	Calendar.setup({
+	      	cont          : "calendario",
+	      	bottomBar	  : false,
+	  		min: 20140108,
+	  		max: 20140125,
+			onSelect      : function() {
+            	var fecha = document.getElementById("fecha");
+            	fecha.value = this.selection.print("%d/%m/%Y").join("\n");  
+		    },
+		
+	  	})
+	  </script>
+  </div>
+  
+  <input id="fecha" type="text" disabled/>
+  
+
+
+
+ 
+</body>
+</html>
