@@ -3,18 +3,25 @@
 
 //Secciones
 $SECCIONES['PLATEA'] = "Platea"; 
-$SECCIONES['PALCO'] = "Palco"; 
+$SECCIONES['PALCO1'] = "Palco 1"; 
+$SECCIONES['PALCO2'] = "Palco 2";
+$SECCIONES['PALCO3'] = "Palco 3";
+$SECCIONES['PALCO4'] = "Palco 4";
 $SECCIONES['ANFITEATRO'] = "Anfiteatro"; 
 
 //Filas por secciones
-$NUM_FILAS['PLATEA'] = 5;
-$NUM_FILAS['PALCO'] = 2;
-$NUM_FILAS['ANFITEATRO'] = 3;
+$NUM_FILAS_PLATEA = 5;
+$NUM_FILAS_ANFITEATRO = 3;
 
 //Columnas por secciones
-$NUM_COLUMNAS['PLATEA'] = 12; //Ha de ser un número par
-$NUM_COLUMNAS['PALCO'] = 2; 
-$NUM_COLUMNAS['ANFITEATRO'] = 18; //Ha de ser un número par, múltiplo de 3
+$NUM_COLUMNAS_PLATEA = 12; //Ha de ser un número par
+$NUM_COLUMNAS_ANFITEATRO = 18; //Ha de ser un número par, múltiplo de 3
+
+//Butacas del palco (Siempre tendrá una fila)
+$NUM_BUTACAS_PALCO1 = 4;
+$NUM_BUTACAS_PALCO2 = 4;
+$NUM_BUTACAS_PALCO3 = 4;
+$NUM_BUTACAS_PALCO4 = 4;
 
 /******************************************/
 
@@ -30,14 +37,14 @@ function crearPlatea($fil, $col){
 
 		//Asientos pares
 		for($c=$col-1; $c>0; $c=$c-2){
-			elegirTipoButaca($f, $c, $SECCIONES['PLATEA'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['PLATEA']);
 		}
 
 		echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";
 
 		//Asientos impares
 		for($c=0; $c<$col; $c=$c+2){
-			elegirTipoButaca($f, $c, $SECCIONES['PLATEA'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['PLATEA']);
 	
 		}
 		echo "</tr>";
@@ -45,14 +52,13 @@ function crearPlatea($fil, $col){
 	echo "</table>";	
 }
 
-function crearPalco($numPalco, $fil, $col){
-	global $SECCIONES;
+function crearPalco($seccion, $butacas){
 	echo "<table>";
-	echo "<tr><td colspan='$col'><p class='secciones'>Palco " . $numPalco . " - X€</p></td></tr>";
+	echo "<tr><td colspan='$col'><p class='secciones'>" . $seccion . " - X€</p></td></tr>";
 	for($f=$fil-1; $f>=0; $f--){
 		echo "<tr>";
 		for($c=$col-1; $c>=0; $c--)
-			elegirTipoButaca($f, $c, $SECCIONES['PALCO'], $numPalco);
+			elegirTipoButaca($f, $c, $seccion);
 		echo "</tr>";
 	}
 	echo "</table>";	
@@ -71,21 +77,21 @@ function crearAnfiteatro($fil, $col){
 
 		//Asientos pares
 		for($c=$col-1; $c>=$col/3; $c=$c-2){
-			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO']);
 		}
 		echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";
 		for($c=$col/3-1; $c>=0; $c=$c-2){
-			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO']);
 		}
 		
 		//Asientos impares
 		for($c=0; $c<$col/3; $c=$c+2){
-			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO']);
 	
 		}
 		echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";
 		for($c=$col/3; $c<$col; $c=$c+2){
-			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO']);
 	
 		}
 		
@@ -94,12 +100,10 @@ function crearAnfiteatro($fil, $col){
 	echo "</table>";	
 }
 
-function elegirTipoButaca($f, $c, $s, $numPalco){
+function elegirTipoButaca($f, $c, $s){
 	global $SECCIONES, $NUM_COLUMNAS;
-	if($numPalco==null) //Si no es palco
-		$butacaReserva=$s.":".($f+1).":".($c+1);
-	else
-		$butacaReserva=$s.":".$numPalco.":".($NUM_COLUMNAS['PALCO']*$f+$c+1);
+		
+	$butacaReserva=$s.":".($f+1).":".($c+1);
 	
 	echo "<td>";
 		if(isset($_SESSION['butacasReservadas']) && in_array($butacaReserva, $_SESSION['butacasReservadas'])){

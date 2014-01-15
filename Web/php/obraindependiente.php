@@ -79,22 +79,22 @@ function comprobarboton(){
         <!-- butacas here -->
         	<div id="capaobras">
 				<div id="butacasAnfiteatro">
-					<?php crearAnfiteatro($NUM_FILAS['ANFITEATRO'], $NUM_COLUMNAS['ANFITEATRO']);?>
+					<?php crearAnfiteatro($NUM_FILAS_ANFITEATRO, $NUM_COLUMNAS_ANFITEATRO);?>
 				</div>
 				<div id="butacasPlatea">
-					<?php crearPlatea($NUM_FILAS['PLATEA'], $NUM_COLUMNAS['PLATEA']);?>
+					<?php crearPlatea($NUM_FILAS_PLATEA, $NUM_COLUMNAS_PLATEA);?>
 				</div>
 				<div id="butacasPalco1">
-					<?php crearPalco(1, $NUM_FILAS['PALCO'], $NUM_COLUMNAS['PALCO']);?>
+					<?php crearPalco($SECCIONES['PALCO1'], $NUM_BUTACAS_PALCO1);?>
 				</div>
 				<div id="butacasPalco2">
-					<?php crearPalco(2, $NUM_FILAS['PALCO'], $NUM_COLUMNAS['PALCO']);?>
+					<?php crearPalco($SECCIONES['PALCO2'], $NUM_BUTACAS_PALCO2);?>
 				</div>
 				<div id="butacasPalco3">
-					<?php crearPalco(3, $NUM_FILAS['PALCO'], $NUM_COLUMNAS['PALCO']);?>
+					<?php crearPalco($SECCIONES['PALCO3'], $NUM_BUTACAS_PALCO3);?>
 				</div>
 				<div id="butacasPalco4">
-					<?php crearPalco(4, $NUM_FILAS['PALCO'], $NUM_COLUMNAS['PALCO']);?>
+					<?php crearPalco($SECCIONES['PALCO4'], $NUM_BUTACAS_PALCO4);?>
 				</div>
             </div>
         	<div id="capacalendarioyhora">  
