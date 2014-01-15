@@ -53,12 +53,18 @@ function crearPlatea($fil, $col){
 }
 
 function crearPalco($seccion, $butacas){
+	$numButaca=$butacas-1;
 	echo "<table>";
-	echo "<tr><td colspan='$col'><p class='secciones'>" . $seccion . " - X€</p></td></tr>";
-	for($f=$fil-1; $f>=0; $f--){
+	echo "<tr><td colspan='$butacas/2'><p class='secciones'>" . $seccion . " - X€</p></td></tr>";
+	//Butacas en 2 filas
+	for($i=0; $i<2; $i++){
 		echo "<tr>";
-		for($c=$col-1; $c>=0; $c--)
-			elegirTipoButaca($f, $c, $seccion);
+			for($b=$butacas/2-1; $b>=0; $b--){
+				echo "<td>";
+				elegirTipoButaca(0, $numButaca, $seccion);
+				$numButaca--;
+				echo "</td>";
+			}
 		echo "</tr>";
 	}
 	echo "</table>";	
