@@ -15,17 +15,18 @@
 	
 	//Referencia de la obra
 	$ref = 1; //$_POST['refObra'];
+	//Obtener información de la obra
+	$infoObra=verInfoObra($ref);
+	//Obtener todos los pases de la obra
+	$pases=verPases($ref);
+	
 	//Obtener el último día del espectáculo y convertirlo al formato YYYYMMDD
-	$ultimoDia=verFechaFin($ref);
+	$ultimoDia=$infoObra["f_final"];
 	$ultimoDia=explode('-', $ultimoDia);
 	$ultimoDia = $ultimoDia[0].$ultimoDia[1].$ultimoDia[2];
 	
-	//Obtener las horas de la fecha seleccionada
-	//$query
-	
 	//Obtener las butacas reservadas en esa fecha
-	//$butacas=verButacasReservadas($fecha,$hora);
-		
+	//$butacas=verButacasReservadas($fecha,$hora);	
 ?>
 	
 	<?php
@@ -52,6 +53,14 @@
 <!--Calendario-->
 <script language="javascript" type="text/javascript">
 function comprobarboton(){
+	//Comprobar cuestión de fecha
+	var isFecha =  "<?php echo isset($_GET['fecha']); ?>" ;
+	if(isFecha == 1){
+		var fecha = "<?php echo $_GET['fecha']; ?>";
+		document.getElementById("formulario").fecha.value=fecha;
+	}
+		
+	
 	var boolean = "<?php echo isset($_SESSION['butacasReservadas']); ?>" ;
 	if (boolean == 1){
 		document.getElementById("formulario").reservar.disabled=false;
@@ -64,8 +73,7 @@ function comprobarboton(){
 </head>
 <body onload=comprobarboton()>
 	<div id="capacontenedora">
-    	<div id="capatitulo">El teatro cool
-		</div>
+    	<div id="capatitulo">El teatro cool</div>
     	<header>
         <div class="contenedor" id="uno">
 			<img class="icon" src="../imagenes/icon5.png">
@@ -113,32 +121,36 @@ function comprobarboton(){
         	<div id="capacalendarioyhora">  
 				<div id="capatituloobra">
 					<!--$_POST['tituloObra']-->
-					<?=verHoras(2014-01-02);?>
+					<?=$infoObra["nombre"];?>
 				</div> 
 				<!--Calendario-->            
         		<div id="capafechas">
 			  	  <script type="text/javascript">
-			  	  	Calendar.setup({
+			  	  	var calendario = Calendar.setup({
 			  	      	cont          : "capafechas",
 			  	      	bottomBar	  : false,
 			  	  		min: <?=date("Ymd");?>, //Primer día seleccionable
 			  	  		max: <?=$ultimoDia;?>, 	//Último día seleccionable
 			  			onSelect      : function() {
 			              	var fecha = document.getElementById("fecha");
-			              	fecha.value = this.selection.print("%d/%m/%Y").join("\n");  
+			              	fecha.value = this.selection.print("%Y%m%d").join("\n"); 
+							document.getElementById("formulario").submit();
 			  		    },
 	
 			  	  	})
+					calendario.selection.set(<?=$_GET['fecha']?>);
 			  	  </script>
                 </div>
 				<form id="formulario" method="get" action="">
-					Fecha: <input id="fecha" type="text"/>
+					Fecha: <input id="fecha" type="text" name="fecha"/>
 	        		<div id="capahoras">
 						<select name="hora" onchange="this.form.submit()" id="pase">
-							<Option value="0">---Seleccione hora---</option>
-							<Option>Hora 1</option>
-							<Option>Hora 2</option>
-							<Option>Hora 3</option>							
+							<Option value="0">---Hora---</option>
+							<?php
+								while($v=mysqli_fetch_array($pases))
+									if($v["fecha"]==$_GET['fecha'])
+										echo "<Option>".$v["hora"]."</option>";
+							?>						
 						</select>
 	                </div> 
 	                <div id="capabutton">
@@ -150,5 +162,4 @@ function comprobarboton(){
 	</div>
 </body>
 </html>
-
 
