@@ -12,8 +12,8 @@ function reservar($fecha, $hora, $fila, $numero, $seccion, $dni) {
             . $hora . "',"
             . $fila . ","
             . $numero . ","
-            . $seccion . ",)";
-    return mysqli_query($link, $sql);
+            . $seccion . ")";
+    mysqli_query($link, $sql);
 }
 
 function verButacasReservadas($fecha,$hora){
@@ -29,4 +29,34 @@ function verMisReservas($dni){
     $sql = "SELECT * FROM `reserva` WHERE `dni` = '"
             .$dni. "'";
         return mysqli_query($link, $sql);
+}
+
+function verObras(){
+    global $link;
+    $sql = "SELECT * FROM `obra`";
+    
+    return mysqli_query($link, $sql);
+}
+
+function verPases($obra){
+    global $link;
+    $sql = "select f_inicio, f_final from obra where ref =". $obra ;
+    $cursor = mysqli_query($link, $sql);
+    $fecha_i = $cursor[0];
+    $fecha_f = $cursor[1];
+    $sql = "SELECT * FROM `pase` WHERE fecha BETWEEN '".$fecha_i."' AND '".$fecha_f."'";
+    
+    return mysqli_query($link, $sql);
+}
+
+function añadirObra($nombre, $grupo, $uri, $descripcion, $fecha_ini, $fecha_fin){
+    global $link;
+    $sql = "INSERT INTO `obra`(`nombre`, `grupo`, `uri`, `descripcion`, `f_inicio`, `f_final`) VALUES ('"
+            . $nombre . "','"
+            . $grupo . "','"
+            . $uri . "','"
+            . $descripcion . "','"
+            . $fecha_ini . "','"
+            . $fecha_fin . "')";
+    mysqli_query($link, $sql);
 }
