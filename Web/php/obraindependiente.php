@@ -1,5 +1,6 @@
 <?php session_start();
 	require_once 'butacas.php';
+	require_once '../Gestion/FuncionesDB.php';
 	//Si habíamos seleccionado una butaca la añadimos a la variable de sesión de las butacas reservadas
 	if(isset($_GET['butaca']))
 		$_SESSION['butacasReservadas'][]=$_GET['butaca'];
@@ -12,8 +13,19 @@
 			unset($_SESSION['butacasReservadas']);
 	}
 	
-	//Obtener el último día del espectáculo
-	$ultimoDia="20140124"	
+	//Referencia de la obra
+	$ref = 1; //$_POST['refObra'];
+	//Obtener el último día del espectáculo y convertirlo al formato YYYYMMDD
+	$ultimoDia=verFechaFin($ref);
+	$ultimoDia=explode('-', $ultimoDia);
+	$ultimoDia = $ultimoDia[0].$ultimoDia[1].$ultimoDia[2];
+	
+	//Obtener las horas de la fecha seleccionada
+	//$query
+	
+	//Obtener las butacas reservadas en esa fecha
+	//$butacas=verButacasReservadas($fecha,$hora);
+		
 ?>
 	
 	<?php
@@ -52,7 +64,8 @@ function comprobarboton(){
 </head>
 <body onload=comprobarboton()>
 	<div id="capacontenedora">
-    	<div id="capatitulo">El teatro cool</div>
+    	<div id="capatitulo">El teatro cool
+		</div>
     	<header>
         <div class="contenedor" id="uno">
 			<img class="icon" src="../imagenes/icon5.png">
@@ -99,7 +112,8 @@ function comprobarboton(){
             </div>
         	<div id="capacalendarioyhora">  
 				<div id="capatituloobra">
-					Título de la obra
+					<!--$_POST['tituloObra']-->
+					<?=verHoras(2014-01-02);?>
 				</div> 
 				<!--Calendario-->            
         		<div id="capafechas">
@@ -137,4 +151,4 @@ function comprobarboton(){
 </body>
 </html>
 
-<!--<input name=”agregar” type=”submit” id=”agregar” value=”Aceptar”  ? if($row==”){echo ‘enabled’;} else{ echo ‘disabled’; ?}-->
+
