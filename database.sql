@@ -88,4 +88,4 @@ VALUES
 ('2014-01-30','20:00'),
 ('2014-01-31','20:00');
 
-INSERT INTO `seccion` (`precio`, `descripcion`) VALUES (50, 'Platea'),(40, 'Anfiteatro'),(30, 'Palco');
+INSERT INTO `seccion` (`precio`, `descripcion`) VALUES (50, 'Platea'),(40, 'Anfiteatro'),(30, 'Palco1'),(30, 'Palco2'),(30, 'Palco3'),(30, 'Palco4');
