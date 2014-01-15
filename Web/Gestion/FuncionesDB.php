@@ -1,8 +1,29 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+#$format = "d-m-o";
 
+function verificarConexion(){
+    
+}
+
+function reservar($fecha, $hora, $fila, $numero, $seccion, $dni) {
+    $sql = "INSERT INTO `reserva`(`dni`, `fecha`, `hora`, `fila`, `numero`, `seccion`) VALUES ('"
+            . $dni . "','"
+            . $fecha . "','"
+            . $hora . "',"
+            . $fila . ","
+            . $numero . ","
+            . $seccion . ",)";
+    return ...;
+}
+
+function verButacasReservadas($fecha,$hora){
+    $sql = "SELECT `fila`, `numero`, `seccion` FROM `reserva` WHERE `fecha` = '"
+            .$fecha. "' AND `hora` = '"
+            .$hora."'";
+    return ...;
+}
+
+function verMisReservas($dni){
+    
+}
