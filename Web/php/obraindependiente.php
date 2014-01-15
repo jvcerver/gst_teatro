@@ -13,8 +13,16 @@
 	}
 	
 	//Obtener el último día del espectáculo
-	$ultimoDia="20140124"
+	$ultimoDia="20140124"	
 ?>
+	
+	<?php
+		
+	//Hora
+	//Si habíamos seleccionado una hora la añadimos a la variable de sesion
+	if(isset($_GET['hora']))
+		$_SESSION['hora'] = $_GET['hora'];
+	?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,8 +38,19 @@
 <script type="text/javascript" src="../javascript/Calendario/js/jscal2.js"></script>
 <script type="text/javascript" src="../javascript/Calendario/js/lang/es.js"></script>
 <!--Calendario-->
+<script language="javascript" type="text/javascript">
+function comprobarboton(){
+	var boolean = "<?php echo isset($_SESSION['butacasReservadas']); ?>" ;
+	if (boolean == 1){
+		document.getElementById("formulario").reservar.disabled=false;
+	} else {
+		document.getElementById("formulario").reservar.disabled=true;
+	}
+	document.getElementById("pase").value="<?php echo $_SESSION['hora']; ?>";
+}
+</script>
 </head>
-<body>
+<body onload=comprobarboton()>
 	<div id="capacontenedora">
     	<div id="capatitulo">El teatro cool</div>
     	<header>
@@ -97,20 +116,25 @@
 	
 			  	  	})
 			  	  </script>
-				  <!--Fecha: <input id="fecha" type="text" disabled/>-->
                 </div>
-        		<div id="capahoras">
-        		<form>
-            	<input type="text" />
-            	</form>
-                </div> 
-                <div id="capabutton">
-        		<form>
-            	<input type="submit" />
-            	</form>
-                </div>         		       	      
+				<form id="formulario" method="get" action="">
+					Fecha: <input id="fecha" type="text"/>
+	        		<div id="capahoras">
+						<select name="hora" onchange="this.form.submit()" id="pase">
+							<Option value="0">---Seleccione hora---</option>
+							<Option>Hora 1</option>
+							<Option>Hora 2</option>
+							<Option>Hora 3</option>							
+						</select>
+	                </div> 
+	                <div id="capabutton">
+	            		<input type="submit" disabled="true" name="reservar" value="Comprar"/>
+                	</div>
+				</form>         		       	      
         	</div>          	         
         </div>     
 	</div>
 </body>
 </html>
+
+<!--<input name=”agregar” type=”submit” id=”agregar” value=”Aceptar”  ? if($row==”){echo ‘enabled’;} else{ echo ‘disabled’; ?}-->
