@@ -1,0 +1,182 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px;
+	padding:0px;
+	font-family: Helvetica Neue; 
+}
+#capacontenedora{
+	background-color:#6F6;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: -480px;
+	width: 960px;
+	position:absolute;
+	top: 0px;
+	left:50%;
+	height:900px;	
+	}
+#capatitulo{
+	background-color:#06F;
+	position:relative;
+	margin-top: 0px;
+	height:200px;
+	}
+#capamenu{
+	background-color:#F36;
+	position:relative;
+	height:auto;
+	}
+#capadetalles{		
+	background-color:#99F;
+	position:relative;
+	height:120px;
+	width:150px;
+	margin-left:-60px;	
+	left:50%;	
+}
+#capadetalles2{		
+	background-color:#99F;
+	position:relative;
+	height:120px;
+	width:150px;
+}
+#capacontenedoraobrasquery{	
+	background-color:#99F;
+	position:relative;
+	height:600px;
+	width:300px;
+	margin-left:-150px;	
+	left:50%;	
+}
+#capaobraindividual{
+	background-color:#CF3;
+	position:relative;
+	height:150px;
+	width:150px;
+	margin-left:-75px;	
+	left:50%;	
+	}
+#imagenobraquery{
+	background:#CFF;
+	width:30px;
+	height:30px;
+	/*src:"";*/
+}
+#capacalendarioyhora{
+	border: 4px solid black;
+	border-right: 0px solid black;
+	background-color:#63C;
+	position:relative;
+	height:350px;
+	width:216px;
+	margin-left:0px;	
+	margin-top:-16px;
+	top:0px;		
+}
+#contenedoraCapaCalendario{
+	background-color:#CF6;
+	position:relative;
+	height:350px;
+	width:960px;
+	margin-left:0px;	
+	margin-top:50px;
+	top:0px;		
+}
+#capahoras{	
+	position: relative;
+	width: 50px;
+	top: 20px;
+	left: 45px;
+}
+#capaobras{
+	border: 4px solid black;
+	background-color:#F00;
+	position: absolute;
+	width: 732px;
+	height:350px;	
+	left: 220px;
+}
+#capatituloobra{
+	margin: 3px;
+	position: relative;
+	top:0px;
+	left:0px;
+	font-size:25px;
+	word-wrap: break-word;
+	text-align:center;
+	color:white;
+}
+#capafechas{	
+	position: relative;
+	top: 5px;
+	left: 0px;
+}
+#capabutton{	
+	position: relative;
+	width: 50px;
+	top: 40px;
+	left: 150px;
+}
+
+/*menú*/
+header{	
+	width:960px;
+	height:200px;
+	background:#CFC;	
+}
+div.contenedor{
+	width: 192px;
+	height: 200px;
+	float:left;
+	transition: height .4s;
+}
+div#uno{
+	background-color: #333;
+}
+div#dos{
+	background-color: #333;
+}
+div#tres{
+	background-color: #333;
+}
+div#cuatro{
+	background-color: #333;
+}
+div#cinco{
+	background-color: #333;
+}
+/*efectos */
+img.icon{
+	display: block;
+	margin:50px auto;
+	background-color: rgba(255,255,255,.15);
+	width:40px;
+	padding:20px;
+	border-radius: 50%;
+	box-shadow: 0px 0px 0px 30px rgba(255,255,255,0);
+	transition:box-shadow .4s;	
+}
+
+p.texto{
+	font-size: 1.2em;
+	color:white;
+	text-align: center;
+	opacity: .6;
+	transition: padding-top .4s;	
+}
+
+div.contenedor:hover{
+	height:234px;
+}
+
+div.contenedor:hover p.texto{
+	padding-top: 20px;
+	opacity: 1;
+	font-size: 1.8em;
+}
+
+div.contenedor:hover img.icon{
+	box-shadow:0px 0px 0px 0px rgba(255,255,255,.6);	
+}
+
