@@ -38,10 +38,20 @@ function verObras(){
     return mysqli_query($link, $sql);
 }
 
+/*Devuelve la información de una obra en concreto*/
+function verInfoObra($ref){
+    global $link;
+	$sql = "select * from obra where ref =". $ref;
+    
+    $resultado = mysqli_query($link, $sql);
+	
+	return mysqli_fetch_array($resultado);
+}
+
 function verPases($obra){
     global $link;
     $sql = "select f_inicio, f_final from obra where ref =". $obra ;
-    $cursor = mysqli_query($link, $sql);
+    $cursor = mysqli_fetch_array(mysqli_query($link, $sql));
     $fecha_i = $cursor[0];
     $fecha_f = $cursor[1];
     $sql = "SELECT * FROM `pase` WHERE fecha BETWEEN '".$fecha_i."' AND '".$fecha_f."'";
@@ -60,3 +70,4 @@ function añadirObra($nombre, $grupo, $uri, $descripcion, $fecha_ini, $fecha_fin
             . $fecha_fin . "')";
     mysqli_query($link, $sql);
 }
+?>

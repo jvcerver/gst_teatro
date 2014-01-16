@@ -8,13 +8,14 @@
 a{
 	text-decoration:none; 
 }
-a .butacaReservada, a .butacaLibre, a .butacaOcupada{
+a .butacaReservada, a .butacaLibre, .butacaOcupada{
 	color:black;	
 	font-size:15px;
 	line-height:27px;  
 }
 .butacaReservada{
 	background-image:url(../imagenes/butacaReserva.png);
+	cursor:pointer;
 }
 .butacaLibre{
 	background-image:url(../imagenes/butacaLibre.png);
@@ -84,6 +85,9 @@ table{
 	color:pink;
 	margin:0px;
 	padding:0px;
+}
+.pasillo{
+	width:10px;
 }
 
 	
