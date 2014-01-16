@@ -70,5 +70,4 @@ function añadirObra($nombre, $grupo, $uri, $descripcion, $fecha_ini, $fecha_fin
             . $fecha_fin . "')";
     mysqli_query($link, $sql);
 }
-
 ?>
