@@ -12,9 +12,45 @@
 		if (empty($_SESSION['butacasReservadas']))
 			unset($_SESSION['butacasReservadas']);
 	}
-	
+
+	/*****Recuperamos las variables que necesitaremos*****/
 	//Referencia de la obra
-	$ref = 1; //$_POST['refObra'];
+	$ref = 1; //$_SESSION['refObra'];
+	//Fecha
+	if(isset($_SESSION['fecha']))
+		$fecha = $_SESSION['fecha'];
+	else{
+		$fecha = 0;
+		$fechaInt = 0;
+	}
+	//Hora
+	if(isset($_SESSION['hora']))
+		$hora = $_SESSION['hora'];
+	else
+		$hora = 0;
+	
+	//Día
+	if(isset($_GET['fecha'])){
+		//Actualizamos la fecha en la sesión
+		$_SESSION['fecha'] = $_GET['fecha'];
+		
+		$fecha = $_SESSION['fecha'];
+	}
+	if($fecha!=0){
+		$fechaInt = explode('-', $fecha);
+		$fechaInt = $fechaInt[0].$fechaInt[1].$fechaInt[2];
+	}
+	
+	//Hora (Pase)
+	if(isset($_GET['hora'])){
+		//Actualizamos la hora en la sesion
+		$_SESSION['hora'] = $_GET['hora'];
+		
+		$hora = $_SESSION['hora'];
+	}		
+	
+	//Butacas reservadas
+
 	//Obtener información de la obra
 	$infoObra=verInfoObra($ref);
 	//Obtener todos los pases de la obra
@@ -29,13 +65,6 @@
 	//$butacas=verButacasReservadas($fecha,$hora);	
 ?>
 	
-	<?php
-		
-	//Hora
-	//Si habíamos seleccionado una hora la añadimos a la variable de sesion
-	if(isset($_GET['hora']))
-		$_SESSION['hora'] = $_GET['hora'];
-	?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,22 +82,19 @@
 <!--Calendario-->
 <script language="javascript" type="text/javascript">
 function comprobarboton(){
-	//Comprobar cuestión de fecha
-	var isFecha =  "<?php echo isset($_GET['fecha']); ?>" ;
-	if(isFecha == 1){
-		var fecha = "<?php echo $_GET['fecha']; ?>";
+	//Activar o desactivar el campo de fecha
+	var isFecha = "<?php echo isset($_SESSION['fecha']); ?>" ;
+	if (isFecha == false)
+		document.getElementById("pase").disabled=true;
 		
-		document.getElementById("formulario").fecha.value=fecha;
-	}
-		
-	
 	var boolean = "<?php echo isset($_SESSION['butacasReservadas']); ?>" ;
 	if (boolean == 1){
 		document.getElementById("formulario").reservar.disabled=false;
 	} else {
 		document.getElementById("formulario").reservar.disabled=true;
 	}
-	document.getElementById("pase").value="<?php echo $_SESSION['hora']; ?>";
+	document.getElementById("pase").value="<?=$hora?>";
+	document.getElementById("fecha").value="<?=$fecha?>";
 }
 </script>
 </head>
@@ -100,24 +126,26 @@ function comprobarboton(){
         <div id="contenedoraCapaCalendario">
         <!-- butacas here -->
         	<div id="capaobras">
-				<div id="butacasAnfiteatro">
-					<?php crearAnfiteatro($NUM_FILAS_ANFITEATRO, $NUM_COLUMNAS_ANFITEATRO);?>
-				</div>
-				<div id="butacasPlatea">
-					<?php crearPlatea($NUM_FILAS_PLATEA, $NUM_COLUMNAS_PLATEA);?>
-				</div>
-				<div id="butacasPalco1">
-					<?php crearPalco($SECCIONES['PALCO1'], $NUM_BUTACAS_PALCO1);?>
-				</div>
-				<div id="butacasPalco2">
-					<?php crearPalco($SECCIONES['PALCO2'], $NUM_BUTACAS_PALCO2);?>
-				</div>
-				<div id="butacasPalco3">
-					<?php crearPalco($SECCIONES['PALCO3'], $NUM_BUTACAS_PALCO3);?>
-				</div>
-				<div id="butacasPalco4">
-					<?php crearPalco($SECCIONES['PALCO4'], $NUM_BUTACAS_PALCO4);?>
-				</div>
+				<?php if(isset($_SESSION['hora']) && $_SESSION['hora']!=0){?>
+					<div id="butacasAnfiteatro">
+						<?php crearAnfiteatro($NUM_FILAS_ANFITEATRO, $NUM_COLUMNAS_ANFITEATRO);?>
+					</div>
+					<div id="butacasPlatea">
+						<?php crearPlatea($NUM_FILAS_PLATEA, $NUM_COLUMNAS_PLATEA);?>
+					</div>
+					<div id="butacasPalco1">
+						<?php crearPalco($SECCIONES['PALCO1'], $NUM_BUTACAS_PALCO1);?>
+					</div>
+					<div id="butacasPalco2">
+						<?php crearPalco($SECCIONES['PALCO2'], $NUM_BUTACAS_PALCO2);?>
+					</div>
+					<div id="butacasPalco3">
+						<?php crearPalco($SECCIONES['PALCO3'], $NUM_BUTACAS_PALCO3);?>
+					</div>
+					<div id="butacasPalco4">
+						<?php crearPalco($SECCIONES['PALCO4'], $NUM_BUTACAS_PALCO4);?>
+					</div>
+				<?php } ?>
             </div>
         	<div id="capacalendarioyhora">  
 				<div id="capatituloobra">
@@ -134,28 +162,25 @@ function comprobarboton(){
 			  	  		max: <?=$ultimoDia;?>, 	//Último día seleccionable
 			  			onSelect      : function() {
 			              	var fecha = document.getElementById("fecha");
-			              	fecha.value = this.selection.print("%Y-%m-%d").join("\n"); 
+			              	fecha.value = this.selection.print("%Y-%m-%d").join("\n");
+							document.getElementById("pase").value=0;
 							document.getElementById("formulario").submit();
 			  		    },
+						selection : <?=$fechaInt;?>,
 	
 			  	  	})
-					var isFecha =  "<?php echo isset($_GET['fecha']); ?>" ;
-					if(isFecha == 1){
-						var fecha = "<?=$_GET['fecha']; ?>";
-						var fechaInt = fecha.split("-");
-						calendario.selection.set(fechaInt[0]+fechaInt[1]+fechaInt[2]);
-					}
+					
 
 			  	  </script>
                 </div>
 				<form id="formulario" method="get" action="">
-					Fecha: <input id="fecha" type="text" name="fecha"/>
+					<input id="fecha" type="hidden" name="fecha"/>
 	        		<div id="capahoras">
 						<select name="hora" onchange="this.form.submit()" id="pase">
 							<Option value="0">---Hora---</option>
 							<?php
 								while($v=mysqli_fetch_array($pases))
-									if($v["fecha"]==$_GET['fecha'])
+									if($v["fecha"]==$fecha)
 										echo "<Option>".$v["hora"]."</option>";
 							?>						
 						</select>
