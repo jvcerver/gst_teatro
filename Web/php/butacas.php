@@ -55,7 +55,7 @@ function crearPlatea($fil, $col, $butacasOcupadas){
 function crearPalco($seccion, $butacas, $butacasOcupadas){
 	$numButaca=$butacas-1;
 	echo "<table>";
-	echo "<tr><td colspan='$butacas/2'><p class='secciones'>" . $seccion . " - X€</p></td></tr>";
+	echo "<tr><td colspan='$butacas/2'><p class='secciones'>Palco " . ($seccion-2) . " - X€</p></td></tr>";
 	//Butacas en 2 filas
 	for($i=0; $i<2; $i++){
 		echo "<tr>";
