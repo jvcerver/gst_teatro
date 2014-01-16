@@ -92,9 +92,9 @@ function comprobaractivaciones(){
 		
 	var boolean = "<?php echo isset($_SESSION['butacasReservadas']); ?>" ;
 	if (boolean == 1){
-		document.getElementById("formulario").reservar.disabled=false;
+		document.getElementById("formEnvio").reservar.disabled=false;
 	} else {
-		document.getElementById("formulario").reservar.disabled=true;
+		document.getElementById("formEnvio").reservar.disabled=true;
 	}
 	
 	document.getElementById("pase").value="<?=$hora?>";
@@ -160,7 +160,6 @@ function comprobaractivaciones(){
             </div>
         	<div id="capacalendarioyhora">  
 				<div id="capatituloobra">
-					<!--$_POST['tituloObra']-->
 					<?=$infoObra["nombre"];?>
 				</div> 
 				<!--Calendario-->            
@@ -196,10 +195,13 @@ function comprobaractivaciones(){
 							?>						
 						</select>
 	                </div> 
+				</form>  
+				<form id="formEnvio" method="post" action="reserva.php">
 	                <div id="capabutton">
+						<input type="hidden" name="hdnRef" value="<?=$ref?>"/>
 	            		<input type="submit" disabled="true" name="reservar" value="Comprar"/>
                 	</div>
-				</form>         		       	      
+				</form>      		       	      
         	</div>          	         
         </div>     
 	</div>
