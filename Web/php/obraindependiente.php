@@ -19,7 +19,7 @@
 	$infoObra=verInfoObra($ref);
 	//Obtener todos los pases de la obra
 	$pases=verPases($ref);
-	
+
 	//Obtener el último día del espectáculo y convertirlo al formato YYYYMMDD
 	$ultimoDia=$infoObra["f_final"];
 	$ultimoDia=explode('-', $ultimoDia);
@@ -57,6 +57,7 @@ function comprobarboton(){
 	var isFecha =  "<?php echo isset($_GET['fecha']); ?>" ;
 	if(isFecha == 1){
 		var fecha = "<?php echo $_GET['fecha']; ?>";
+		
 		document.getElementById("formulario").fecha.value=fecha;
 	}
 		
@@ -133,12 +134,18 @@ function comprobarboton(){
 			  	  		max: <?=$ultimoDia;?>, 	//Último día seleccionable
 			  			onSelect      : function() {
 			              	var fecha = document.getElementById("fecha");
-			              	fecha.value = this.selection.print("%Y%m%d").join("\n"); 
+			              	fecha.value = this.selection.print("%Y-%m-%d").join("\n"); 
 							document.getElementById("formulario").submit();
 			  		    },
 	
 			  	  	})
-					calendario.selection.set(<?=$_GET['fecha']?>);
+					var isFecha =  "<?php echo isset($_GET['fecha']); ?>" ;
+					if(isFecha == 1){
+						var fecha = "<?=$_GET['fecha']; ?>";
+						var fechaInt = fecha.split("-");
+						calendario.selection.set(fechaInt[0]+fechaInt[1]+fechaInt[2]);
+					}
+
 			  	  </script>
                 </div>
 				<form id="formulario" method="get" action="">
