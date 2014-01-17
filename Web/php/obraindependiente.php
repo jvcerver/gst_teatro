@@ -104,7 +104,6 @@ function comprobaractivaciones(){
 </head>
 <body onload=comprobaractivaciones()>
 	<div id="capacontenedora">
-    	<div id="capatitulo">El teatro cool</div>
     	<header>
         <div class="contenedor" id="uno">
 			<img class="icon" src="../imagenes/icon5.png">
@@ -203,7 +202,10 @@ function comprobaractivaciones(){
                 	</div>
 				</form>      		       	      
         	</div>          	         
-        </div>     
+        </div>
+		<div id="capaFooter">
+        	<img id="imagenCandado"/>	
+        </div>   
 	</div>
 </body>
 </html>
