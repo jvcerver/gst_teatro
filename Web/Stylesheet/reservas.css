@@ -42,7 +42,7 @@
 	width:90%;
 	left:5%;
 }
-h1.titulos{
+h1.titulos, p.info{
 	color:white;
 	padding:15px;
 	word-wrap: break-word;
@@ -50,8 +50,9 @@ h1.titulos{
 }
 #txtDNI{
 	height:50px;
-	width:80%;
+	width:90%;
 	font-size:50px;
+	margin-left:5%;
 }
 #capaDNI{
 	position:relative;
@@ -62,7 +63,19 @@ h1.titulos{
 #btnComprar{
 	position:relative;
 	top:40px;
-	left:40px;
+	left:200px;
 	font-size:30px;
 }
-
+#capaInformacion{
+	position:relative;
+	top:0;
+	left:25%;
+	height:60%;
+	width:50%;
+	overflow:auto;
+}
+p.info{
+	color:red;
+	width:97%;
+	font-size:15px;
+}

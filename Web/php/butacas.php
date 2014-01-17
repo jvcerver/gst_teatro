@@ -135,4 +135,28 @@ function elegirTipoButaca($f, $c, $s, $butacasOcupadas){
 			}
 	echo "</td>";
 }
+
+function mostrarReservas(){
+	foreach($_SESSION['butacasReservadas'] as $butacas){
+		$butacas = explode(':', $butacas);
+		switch($butacas[0]){
+			case 1:
+				echo "Platea-> F:" . $butacas[1] . " B:" . $butacas[2]; 
+				break;
+			case 2:
+				echo "Anfiteatro-> F:" . $butacas[1] . " B:" . $butacas[2];  
+				break;
+			default:
+				echo "Palco " . ($butacas[0]-2) . "-> B:" . $butacas[2];  
+		}
+		echo "</br>";
+	}	
+}
+function realizarReservas($dni){
+	foreach($_SESSION['butacasReservadas'] as $butacas){
+		$butacas = explode(':', $butacas);
+		reservar($_SESSION['fecha'], $_SESSION['hora'], $butacas[1], $butacas[2], $butacas[0], $dni);
+	}
+	
+}
 ?>
