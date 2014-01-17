@@ -13,7 +13,6 @@
 </head>
 <body>
 	<div id="capacontenedora">
-    	<div id="capatitulo">El teatro cool</div>
     	<header>
         <div class="contenedor" id="uno">
 			<img class="icon" src="../imagenes/icon5.png">
@@ -53,7 +52,10 @@
 				</div>
 			</div> 
 			<p class="info">***Podrá consultar sus compras siempre que lo desee accediendo a la sección "Mis reservas" del menú***</p> 		     	  		       	               	    
-        </div>     
+        </div>  
+		<div id="capaFooter">
+        	<img id="imagenCandado"/>	
+        </div>   		
 	</div>
 </body>
 </html>
