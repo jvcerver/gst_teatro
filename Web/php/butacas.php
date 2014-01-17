@@ -2,23 +2,30 @@
 /******DISTRIBUCIÓN DE NUESTRO TEATRO******/
 
 //Secciones
-$SECCIONES['PLATEA'] = "Platea"; 
-$SECCIONES['PALCO'] = "Palco"; 
-$SECCIONES['ANFITEATRO'] = "Anfiteatro"; 
+$SECCIONES['PLATEA'] = 1; 
+$SECCIONES['PALCO1'] = 3; 
+$SECCIONES['PALCO2'] = 4;
+$SECCIONES['PALCO3'] = 5;
+$SECCIONES['PALCO4'] = 6;
+$SECCIONES['ANFITEATRO'] = 2;
 
 //Filas por secciones
-$NUM_FILAS['PLATEA'] = 5;
-$NUM_FILAS['PALCO'] = 2;
-$NUM_FILAS['ANFITEATRO'] = 3;
+$NUM_FILAS_PLATEA = 5;
+$NUM_FILAS_ANFITEATRO = 3;
 
 //Columnas por secciones
-$NUM_COLUMNAS['PLATEA'] = 12; //Ha de ser un número par
-$NUM_COLUMNAS['PALCO'] = 2; 
-$NUM_COLUMNAS['ANFITEATRO'] = 18; //Ha de ser un número par, múltiplo de 3
+$NUM_COLUMNAS_PLATEA = 12; //Ha de ser un número par
+$NUM_COLUMNAS_ANFITEATRO = 18; //Ha de ser un número par, múltiplo de 3
+
+//Butacas del palco (Siempre tendrá una fila)
+$NUM_BUTACAS_PALCO1 = 4;
+$NUM_BUTACAS_PALCO2 = 4;
+$NUM_BUTACAS_PALCO3 = 4;
+$NUM_BUTACAS_PALCO4 = 4;
 
 /******************************************/
 
-function crearPlatea($fil, $col){
+function crearPlatea($fil, $col, $butacasOcupadas){
 	global $SECCIONES;
 	echo "<table>";
 	echo "<tr><td colspan='".($col+4)."'><p class='secciones'>Platea - X€</p></td></tr>";
@@ -30,14 +37,14 @@ function crearPlatea($fil, $col){
 
 		//Asientos pares
 		for($c=$col-1; $c>0; $c=$c-2){
-			elegirTipoButaca($f, $c, $SECCIONES['PLATEA'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['PLATEA'], $butacasOcupadas);
 		}
 
-		echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+		echo "<td><div class='pasillo'></div></td>";
 
 		//Asientos impares
 		for($c=0; $c<$col; $c=$c+2){
-			elegirTipoButaca($f, $c, $SECCIONES['PLATEA'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['PLATEA'], $butacasOcupadas);
 	
 		}
 		echo "</tr>";
@@ -45,21 +52,26 @@ function crearPlatea($fil, $col){
 	echo "</table>";	
 }
 
-function crearPalco($numPalco, $fil, $col){
-	global $SECCIONES;
+function crearPalco($seccion, $butacas, $butacasOcupadas){
+	$numButaca=$butacas-1;
 	echo "<table>";
-	echo "<tr><td colspan='$col'><p class='secciones'>Palco " . $numPalco . " - X€</p></td></tr>";
-	for($f=$fil-1; $f>=0; $f--){
+	echo "<tr><td colspan='$butacas/2'><p class='secciones'>Palco " . ($seccion-2) . " - X€</p></td></tr>";
+	//Butacas en 2 filas
+	for($i=0; $i<2; $i++){
 		echo "<tr>";
-		for($c=$col-1; $c>=0; $c--)
-			elegirTipoButaca($f, $c, $SECCIONES['PALCO'], $numPalco);
+			for($b=$butacas/2-1; $b>=0; $b--){
+				echo "<td>";
+				elegirTipoButaca(0, $numButaca, $seccion, $butacasOcupadas);
+				$numButaca--;
+				echo "</td>";
+			}
 		echo "</tr>";
 	}
 	echo "</table>";	
 }
 
 
-function crearAnfiteatro($fil, $col){
+function crearAnfiteatro($fil, $col, $butacasOcupadas){
 	global $SECCIONES;
 	echo "<table>";
 	echo "<tr><td colspan='".($col+4)."'><p class='secciones'>Anfiteatro - X€</p></td></tr>";
@@ -71,21 +83,21 @@ function crearAnfiteatro($fil, $col){
 
 		//Asientos pares
 		for($c=$col-1; $c>=$col/3; $c=$c-2){
-			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], $butacasOcupadas);
 		}
-		echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+		echo "<td><div class='pasillo'></div></td>";
 		for($c=$col/3-1; $c>=0; $c=$c-2){
-			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], $butacasOcupadas);
 		}
 		
 		//Asientos impares
 		for($c=0; $c<$col/3; $c=$c+2){
-			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], $butacasOcupadas);
 	
 		}
-		echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+		echo "<td><div class='pasillo'></div></td>";
 		for($c=$col/3; $c<$col; $c=$c+2){
-			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], null);
+			elegirTipoButaca($f, $c, $SECCIONES['ANFITEATRO'], $butacasOcupadas);
 	
 		}
 		
@@ -94,28 +106,57 @@ function crearAnfiteatro($fil, $col){
 	echo "</table>";	
 }
 
-function elegirTipoButaca($f, $c, $s, $numPalco){
+function elegirTipoButaca($f, $c, $s, $butacasOcupadas){
 	global $SECCIONES, $NUM_COLUMNAS;
-	if($numPalco==null) //Si no es palco
-		$butacaReserva=$s.":".($f+1).":".($c+1);
-	else
-		$butacaReserva=$s.":".$numPalco.":".($NUM_COLUMNAS['PALCO']*$f+$c+1);
+		
+	$butacaReserva=$s.":".($f+1).":".($c+1);
 	
 	echo "<td>";
-		if(isset($_SESSION['butacasReservadas']) && in_array($butacaReserva, $_SESSION['butacasReservadas'])){
+		//Butaca ocupada
+		if(in_array($butacaReserva, $butacasOcupadas)){
+				$butacaReserva=explode(':', $butacaReserva);	
+				echo "<div class='butacaOcupada'>$butacaReserva[2]</div>";
+		}
+		//Butaca Reservada
+		else if(isset($_SESSION['butacasReservadas']) && in_array($butacaReserva, $_SESSION['butacasReservadas'])){
 		
-			echo "<a href='obraindependiente.php?noButaca=$butacaReserva'>";
-				$butacaReserva=explode(':', $butacaReserva);	
-				echo "<div class='butacaReservada'>$butacaReserva[2]</div>";
-			echo "</a>";
+				echo "<a href='obraindependiente.php?noButaca=$butacaReserva'>";
+					$butacaReserva=explode(':', $butacaReserva);	
+					echo "<div class='butacaReservada'>$butacaReserva[2]</div>";
+				echo "</a>";
 					
-		}
-		else{
-			echo "<a href = 'obraindependiente.php?butaca=$butacaReserva'>";
-				$butacaReserva=explode(':', $butacaReserva);	
-				echo "<div class='butacaLibre'>$butacaReserva[2]</div>";
-			echo "</a>";
-		}
+			}
+			//Butaca libre
+			else{
+				echo "<a href = 'obraindependiente.php?butaca=$butacaReserva'>";
+					$butacaReserva=explode(':', $butacaReserva);	
+					echo "<div class='butacaLibre'>$butacaReserva[2]</div>";
+				echo "</a>";
+			}
 	echo "</td>";
+}
+
+function mostrarReservas(){
+	foreach($_SESSION['butacasReservadas'] as $butacas){
+		$butacas = explode(':', $butacas);
+		switch($butacas[0]){
+			case 1:
+				echo "Platea-> F:" . $butacas[1] . " B:" . $butacas[2]; 
+				break;
+			case 2:
+				echo "Anfiteatro-> F:" . $butacas[1] . " B:" . $butacas[2];  
+				break;
+			default:
+				echo "Palco " . ($butacas[0]-2) . "-> B:" . $butacas[2];  
+		}
+		echo "</br>";
+	}	
+}
+function realizarReservas($dni){
+	foreach($_SESSION['butacasReservadas'] as $butacas){
+		$butacas = explode(':', $butacas);
+		reservar($_SESSION['fecha'], $_SESSION['hora'], $butacas[1], $butacas[2], $butacas[0], $dni);
+	}
+	
 }
 ?>

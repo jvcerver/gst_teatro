@@ -1,4 +1,7 @@
 <?php
+#este fichero no tiene uso alguno mas que para generar una base de datos inicial,
+#tras importar una base de datos ya creada no es necesario dar de alta las butacas
+
 function darAlta($fila, $numero, $seccion) {
             echo 'funcion...\n';
             $conexion = mysqli_connect("localhost", "root", "", "teatro");
@@ -17,12 +20,12 @@ function darAltaPases($fecha_inicio, $fecha_fin){
         $numero = 12;
         $seccion = 0; #platea
 
-        darAlta($fila, $numero, $seccion);
-        darAlta(1, 4, "1"); #palcos
-        darAlta(1, 4, "2");
+        darAlta(5, 12,1);
+        darAlta(1, 4, 5); #palcos
+        darAlta(1, 4, "6");
         darAlta(1, 4, "3");
         darAlta(1, 4, "4");
-        darAlta(3, 18, 5);#anfi
+        darAlta(3, 18, 2);#anfi
         
         ?>
         done!
