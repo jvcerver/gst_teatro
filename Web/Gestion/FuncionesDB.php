@@ -24,6 +24,13 @@ function verButacasReservadas($fecha,$hora){
         return mysqli_query($link, $sql);
 }
 
+function verObraReservada($no_entrada){
+	global $link;
+	$sql = "SELECT nombre,uri FROM obra WHERE ref IN (SELECT ref FROM obra WHERE (SELECT fecha FROM reserva WHERE no_entrada=".$no_entrada.")as fecha BETWEEN f_inicio AND f_final)";
+	#$cursor = mysqli_fetch_array(mysqli_query($link, $sql));
+	return mysqli_query($link, $sql);
+}
+
 function verMisReservas($dni){
     global $link;
     $sql = "SELECT * FROM `reserva` WHERE `dni` = '"
