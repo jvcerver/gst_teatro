@@ -2,12 +2,7 @@
 	require_once 'butacas.php';
 	require_once '../Gestion/FuncionesDB.php';
 	
-	/*****Obtenemos la información que necesitaremos*****/
-	//Referencia de la obra
-	$ref = $_POST['hdnRef'];
-	
-	//Obtener información de la obra
-	$infoObra=verInfoObra($ref);
+
 	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -20,9 +15,9 @@
 <script language="javascript" type="text/javascript">
 function activarBoton(){
 	if(document.getElementById("txtDNI").value.length==9)
-		document.getElementById("btnComprar").disabled=false;
+		document.getElementById("botonDNI").disabled=false;
 	else
-		document.getElementById("btnComprar").disabled=true;
+		document.getElementById("botonDNI").disabled=true;
 }
 </script>
 </head>
@@ -52,34 +47,48 @@ function activarBoton(){
         </header>
         <div id="contenedoraCapaCalendario">
 			<div id="capaIzquierda">
-				<h1 class="titulos"><?=$infoObra['nombre']?></h1>
-					<img id="capaCartel" src="../imagenes/obras/<?=$infoObra['uri']?>" alt="imagen cartel"/>
+				<h1 class="titulos">Reservas pasadas</h1>
+				<div class="miReserva">
+					<img class="imgMiReserva" src="../imagenes/butacaLibre.png" alt="imagen obra"/>
+					<div class="infoMiReserva"><h4>Título de la obra fdasf fdas mdflafma</h4>
+						<h5>AAAA-MM-DD (HH:MM:SS)</h5>
+						<h6>Butaca jlkdjfas dksf</h6>
+					</div>	
+				</div>
 			</div> 
 			<div id="capaCentral">
-				<h1 class="titulos">
-					<?php
-						echo $_SESSION['fecha'] . " (" . $_SESSION['hora'] . ")";
-					?>
-				</h1>
-				<div id="capabutacasReservadas">
-					<?php
-						mostrarReservas();
-					?>
-				</div> 
+				<h1 class="titulos">Reservas actuales</h1>
+				<div class="miReserva">
+					<img class="imgMiReserva" src="../imagenes/butacaLibre.png" alt="imagen obra"/>
+					<div class="infoMiReserva"><h4>Título de la obra fdasf fdas mdflafma</h4>
+						<h5>AAAA-MM-DD (HH:MM:SS)</h5>
+						<h6>Butaca jlkdjfas dksf</h6>
+					</div>	
+				</div>
+				<div class="miReserva">
+					<img class="imgMiReserva" src="../imagenes/butacaLibre.png" alt="imagen obra"/>
+					<div class="infoMiReserva"><h4>Título de la obra</h4>
+						<h5>AAAA-MM-DD (HH:MM:SS)</h5>
+						<h6>Butaca jlkdjfas dksf</h6>
+					</div>	
+				</div>
+				<div class="miReserva">
+					<img class="imgMiReserva" src="../imagenes/butacaLibre.png" alt="imagen obra"/>
+					<div class="infoMiReserva"><h4>Título de la obra</h4>
+						<h5>AAAA-MM-DD (HH:MM:SS)</h5>
+						<h6>Butaca jlkdjfas dksf</h6>
+					</div>	
+				</div>
 			</div> 	
 			<div id="capaDerecha">
 				<form id="formulario" method="post" action="exitoReserva.php">
 					<div id="capaDNI">
 						<h1 class="titulos">DNI</h1> <input id="txtDNI" maxlength="9" type="text" name="txtDNI" onKeyUp="activarBoton()"/>
-						<input id="btnComprar" type="submit" value="Comprar" disabled="false"/>
+						<input id="botonDNI" type="submit" value="Mis reservas" disabled="false"/>
 					</div>
 				</form>
-			</div>  
-				     	  		       	               	         
-        </div>
-		<div id="capaFooter">
-        	<img id="imagenCandado"/>	
-        </div>   
+			</div>       	  		       	               	         
+        </div>     
 	</div>
 </body>
 </html>
