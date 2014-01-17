@@ -38,6 +38,12 @@ function verMisReservas($dni){
         return mysqli_query($link, $sql);
 }
 
+function verPrecios(){
+    global $link;
+    $sql = "SELECT * FROM `seccion`";
+        return mysqli_query($link, $sql);//devuelve codigo/precio/nombreSeccion
+}
+
 function verObras(){
     global $link;
     $sql = "SELECT * FROM `obra`";
