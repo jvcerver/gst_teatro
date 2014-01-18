@@ -137,21 +137,25 @@ function elegirTipoButaca($f, $c, $s, $butacasOcupadas){
 	echo "</td>";
 }
 
+function mostrarReservaIndividual($butaca, $precios){
+	$butaca = explode(':', $butaca);
+	switch($butaca[0]){
+		case 1:
+			echo "Platea-> F:" . $butaca[1] . " B:" . $butaca[2] . " (" . $precios[$butaca[0]] . "€)"; 
+			break;
+		case 2:
+			echo "Anfiteatro-> F:" . $butaca[1] . " B:" . $butaca[2] . " (" . $precios[$butaca[0]] . "€)"; 
+			break;
+		default:
+			echo "Palco " . ($butaca[0]-2) . "-> B:" . $butaca[2] . " (" . $precios[$butaca[0]] . "€)";
+	}
+}
+
 function mostrarReservas(){
 	$precios=obtenerPreciosSecciones();
 	$total=0;
 	foreach($_SESSION['butacasReservadas'] as $butacas){
-		$butacas = explode(':', $butacas);
-		switch($butacas[0]){
-			case 1:
-				echo "Platea-> F:" . $butacas[1] . " B:" . $butacas[2] . " (" . $precios[$butacas[0]] . "€)"; 
-				break;
-			case 2:
-				echo "Anfiteatro-> F:" . $butacas[1] . " B:" . $butacas[2] . " (" . $precios[$butacas[0]] . "€)"; 
-				break;
-			default:
-				echo "Palco " . ($butacas[0]-2) . "-> B:" . $butacas[2] . " (" . $precios[$butacas[0]] . "€)";  
-		}
+		  	mostrarReservaIndividual($butacas, $precios);
 		echo "</br>";
 		$total+=$precios[$butacas[0]];
 	}	

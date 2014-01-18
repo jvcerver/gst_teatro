@@ -1,3 +1,9 @@
+<?php session_start();
+	if(isset($_SESSION['ref']))
+		unset($_SESSION['ref']);
+	session_destroy();
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -50,7 +56,7 @@
 								<?=$v['descripcion']?>
 							</p>  
 							 <!--Pasarle también la referencia-->
-							<a href="obraindependiente.php" class="da-link">Comprar</a>
+							<a href="obraindependiente.php?ref=<?=$v['ref']?>" class="da-link">Comprar</a>
 							<div class="da-img"><img src="../imagenes/obras/<?=$v['uri']?>" height="200px" width="200px" alt="imagen cartel" /></div>
 						</div>
 					<?php 

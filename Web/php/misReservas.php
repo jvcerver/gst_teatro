@@ -23,7 +23,7 @@
 					echo "<img class='imgMiReserva' src='../imagenes/butacaLibre.png' alt='imagen obra'/>";
 					echo "<p class='codigoMiReserva'> Código ". $v['no_entrada'] . "</p>";
 					echo "<div class='infoMiReserva'><h4>Título de la obra</h4>";
-						echo "<h6>" . $v['fecha'] . "(" . $v['hora'] . ")</h6>";
+						echo "<h6>" . $v['fecha'] . " (" . $v['hora'] . ")</h6>";
 						echo "<h5>Butaca</h5>";
 					echo "</div>";	
 				echo "</div>";

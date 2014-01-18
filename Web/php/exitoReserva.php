@@ -39,13 +39,15 @@
 			<h1 class="titulos">
 				COMPRA REALIZADA CON ÉXITO
 			</h1>
+			<img id="imgExitoCompra" src="../imagenes/exitoCompra.png" alt="éxito reserva" />
+			<img id="imgExitoCompraInvertida" src="../imagenes/exitoCompra.png" alt="éxito reserva" />
 			<div id="capaInformacion">
 				<h1 class="titulos">
 					<?php
 						echo $_SESSION['fecha'] . " (" . $_SESSION['hora'] . ")";
 					?>
 				</h1>
-				<div id="capabutacasReservadas">
+				<div id="capabutacasReservadasExito">
 					<?php
 						mostrarReservas();
 					?>
