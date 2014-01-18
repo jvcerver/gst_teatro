@@ -12,19 +12,22 @@
 	}
 
 	function mostrarMisReservas($infoReservas, $funcion){
-		$actuales = 
 		$numReservas=0;
 		//Situamos el puntero al inico del resultado de la consulta
 		mysqli_data_seek($infoReservas, 0);
+		$precios=obtenerPreciosSecciones();
 		while($v=mysqli_fetch_array($infoReservas)){
 			if($funcion($v['fecha'], $v['hora'])){
+				$butaca = $v['seccion'].":".$v['fila'].":".$v['numero'];
 				$numReservas++;
 				echo "<div class='miReserva'>";
 					echo "<img class='imgMiReserva' src='../imagenes/butacaLibre.png' alt='imagen obra'/>";
 					echo "<p class='codigoMiReserva'> Código ". $v['no_entrada'] . "</p>";
 					echo "<div class='infoMiReserva'><h4>Título de la obra</h4>";
 						echo "<h6>" . $v['fecha'] . " (" . $v['hora'] . ")</h6>";
-						echo "<h5>Butaca</h5>";
+						echo "<h6>";
+						mostrarReservaIndividual($butaca, $precios);
+						echo "</h6>";
 					echo "</div>";	
 				echo "</div>";
 			}
