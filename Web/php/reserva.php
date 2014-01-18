@@ -20,9 +20,9 @@
 <script language="javascript" type="text/javascript">
 function activarBoton(){
 	if(document.getElementById("txtDNI").value.length==9)
-		document.getElementById("btnComprar").disabled=false;
+		document.getElementById("botonDNI").disabled=false;
 	else
-		document.getElementById("btnComprar").disabled=true;
+		document.getElementById("botonDNI").disabled=true;
 }
 </script>
 </head>
@@ -71,7 +71,7 @@ function activarBoton(){
 				<form id="formulario" method="post" action="exitoReserva.php">
 					<div id="capaDNI">
 						<h1 class="titulos">DNI</h1> <input id="txtDNI" maxlength="9" type="text" name="txtDNI" onKeyUp="activarBoton()"/>
-						<input id="btnComprar" type="submit" value="Comprar" disabled="false"/>
+						<input id="botonDNI" type="submit" value="Comprar" disabled="false"/>
 					</div>
 				</form>
 			</div>  

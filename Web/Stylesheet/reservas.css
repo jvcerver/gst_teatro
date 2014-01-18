@@ -19,6 +19,7 @@
 	left:0;
 	height:100%;
 	width:33%;
+	overflow:auto;
 }
 #capaCentral{
 	position:absolute;
@@ -29,6 +30,7 @@
 	overflow:auto;
 }
 #capaDerecha{
+	border-left: 2px solid black;
 	position:absolute;
 	top:0;
 	left:67%;
@@ -42,17 +44,12 @@
 	width:90%;
 	left:5%;
 }
-h1.titulos, p.info{
-	color:white;
-	padding:15px;
-	word-wrap: break-word;
-	text-align:center;
-}
+
 #txtDNI{
 	height:50px;
-	width:90%;
+	width:80%;
 	font-size:50px;
-	margin-left:5%;
+	margin-left:10%;
 }
 #capaDNI{
 	position:relative;
@@ -60,11 +57,11 @@ h1.titulos, p.info{
 	left:0;
 	height:200px;
 }
-#btnComprar{
+#botonDNI{
 	position:relative;
 	top:40px;
-	left:200px;
-	font-size:30px;
+	left:150px;
+	font-size:20px;
 }
 #capaInformacion{
 	position:relative;
@@ -74,8 +71,62 @@ h1.titulos, p.info{
 	width:50%;
 	overflow:auto;
 }
+h1.titulos, p.info, h4, h5, h6{
+	color:black;
+	padding:15px;
+	word-wrap: break-word;
+	text-align:center;
+}
+h4, h5, h6{
+	padding:3px;
+}
+div.infoMiReserva {
+	width:62%;
+	top:0px;
+	left:32%;
+	position:absolute;
+	padding:5px;
+	padding-bottom:5px;
+}
+
 p.info{
 	color:red;
 	width:97%;
 	font-size:15px;
+}
+div.miReserva{
+	background-color:white;
+	position:relative;
+	top:0px;
+	left:10%;
+	height:80px;
+	width:74%;
+	padding:10px;
+	margin-bottom:5px;
+	border-radius: 10px;
+	border: 2px solid black;
+}
+img.imgMiReserva{
+	background-color:white;
+	position:relative;
+	top:0px;
+	left:0px;
+	height:90%;
+	width:30%;
+}
+p.codigoMiReserva{
+	width:30%;
+	word-wrap: break-word;
+	text-align:center;
+	font-style:italic;
+	font-size:10px;
+	margin-top:2px;
+}
+h2.infoDNIMiReserva{
+	position:relative;
+	left:0;
+	top:40%;
+	width:67%;
+	text-align:center;
+	font-style:italic;
 }
