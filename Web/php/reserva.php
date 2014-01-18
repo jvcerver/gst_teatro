@@ -19,10 +19,12 @@
 <link href="../Stylesheet/reservas.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript">
 function activarBoton(){
-	if(document.getElementById("txtDNI").value.length==9)
-		document.getElementById("botonDNI").disabled=false;
+	if(document.getElementById("txtDNI").value.length==9){
+		document.getElementById("btnPayPal").style.display="block";
+		document.getElementById("custom").value = document.getElementById("txtDNI").value;	
+	}
 	else
-		document.getElementById("botonDNI").disabled=true;
+		document.getElementById("btnPayPal").style.display="none";
 }
 </script>
 </head>
@@ -69,13 +71,25 @@ function activarBoton(){
 				<h3 id="total">Total = <?=$total?>€</h3>
 			</div> 	
 			<div id="capaDerecha">
-				<form id="formulario" method="post" action="exitoReserva.php">
+				<form id="formulario" action="https://www.sandbox.paypal.com/cgi-bin/localhost/gst_teatro/Web" method="post">
 					<div id="capaDNI">
 						<h1 class="titulos">DNI</h1> <input id="txtDNI" maxlength="9" type="text" name="txtDNI" onKeyUp="activarBoton()"/>
-						<input id="botonDNI" type="submit" value="Comprar" disabled="false"/>
 					</div>
+					<div id="btnPayPal">
+			               <input type="hidden" name="cmd" value="_xclick">
+			               <input type="hidden" name="business" value="teatroSGE2014-facilitator@DAM.com ">
+			               <input type="hidden" name="item_name" value="Pago de entradas <?=$infoObra['nombre']?>">
+			               <input type="hidden" name="currency_code" value="EUR">
+			               <input type="hidden" name="amount" value="<?=$total?>">
+						   <input type="hidden" name="rm" value="2"> 
+						   <input type="hidden" id="custom" name="custom">
+						   <input type="hidden" name="no_shipping" value="1">
+						   <input type="hidden" name="return" value="http://localhost/gst_teatro/Web/php/exitoReserva.php">
+						   <input type="hidden" name="cancel_return" value="http://localhost/gst_teatro/Web">
+			               <input type="image" src="../imagenes/btnPayPal.gif" name="submit" alt="Paga con PayPal de un modo más rápido y seguro">
+				   </div>
 				</form>
-			</div>  
+			</div>
 				     	  		       	               	         
         </div>
 		<div id="capaFooter">

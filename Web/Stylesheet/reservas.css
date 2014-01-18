@@ -71,11 +71,15 @@
 	left:0;
 	height:200px;
 }
-#botonDNI{
+#botonDNI, #btnPayPal{
 	position:relative;
 	top:40px;
 	left:150px;
 	font-size:20px;
+}
+#btnPayPal{
+	display:none;
+	left:200px;
 }
 #capaInformacion{
 	background-color:white;
