@@ -63,9 +63,10 @@ function activarBoton(){
 				</h1>
 				<div id="capabutacasReservadas">
 					<?php
-						mostrarReservas();
+						$total=mostrarReservas();
 					?>
 				</div> 
+				<h3 id="total">Total = <?=$total?>€</h3>
 			</div> 	
 			<div id="capaDerecha">
 				<form id="formulario" method="post" action="exitoReserva.php">

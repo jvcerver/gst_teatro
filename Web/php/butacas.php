@@ -1,4 +1,5 @@
 <?php
+require_once '../Gestion/FuncionesDB.php';
 /******DISTRIBUCIÓN DE NUESTRO TEATRO******/
 
 //Secciones
@@ -25,10 +26,10 @@ $NUM_BUTACAS_PALCO4 = 4;
 
 /******************************************/
 
-function crearPlatea($fil, $col, $butacasOcupadas){
+function crearPlatea($fil, $col, $butacasOcupadas, $precio){
 	global $SECCIONES;
 	echo "<table>";
-	echo "<tr><td colspan='".($col+4)."'><p class='secciones'>Platea - X€</p></td></tr>";
+	echo "<tr><td colspan='".($col+4)."'><p class='secciones'>Platea - " . $precio . "€</p></td></tr>";
 	for($f=$fil-1; $f>=0; $f--){
 
 		echo "<tr>";
@@ -52,10 +53,10 @@ function crearPlatea($fil, $col, $butacasOcupadas){
 	echo "</table>";	
 }
 
-function crearPalco($seccion, $butacas, $butacasOcupadas){
+function crearPalco($seccion, $butacas, $butacasOcupadas, $precio){
 	$numButaca=$butacas-1;
 	echo "<table>";
-	echo "<tr><td colspan='$butacas/2'><p class='secciones'>Palco " . ($seccion-2) . " - X€</p></td></tr>";
+	echo "<tr><td colspan='$butacas/2'><p class='secciones'>Palco " . ($seccion-2) . " - " . $precio . "€</p></td></tr>";
 	//Butacas en 2 filas
 	for($i=0; $i<2; $i++){
 		echo "<tr>";
@@ -71,10 +72,10 @@ function crearPalco($seccion, $butacas, $butacasOcupadas){
 }
 
 
-function crearAnfiteatro($fil, $col, $butacasOcupadas){
+function crearAnfiteatro($fil, $col, $butacasOcupadas, $precio){
 	global $SECCIONES;
 	echo "<table>";
-	echo "<tr><td colspan='".($col+4)."'><p class='secciones'>Anfiteatro - X€</p></td></tr>";
+	echo "<tr><td colspan='".($col+4)."'><p class='secciones'>Anfiteatro - " . $precio . "€</p></td></tr>";
 	for($f=$fil-1; $f>=0; $f--){
 
 		echo "<tr>";
@@ -137,20 +138,24 @@ function elegirTipoButaca($f, $c, $s, $butacasOcupadas){
 }
 
 function mostrarReservas(){
+	$precios=obtenerPreciosSecciones();
+	$total=0;
 	foreach($_SESSION['butacasReservadas'] as $butacas){
 		$butacas = explode(':', $butacas);
 		switch($butacas[0]){
 			case 1:
-				echo "Platea-> F:" . $butacas[1] . " B:" . $butacas[2]; 
+				echo "Platea-> F:" . $butacas[1] . " B:" . $butacas[2] . " (" . $precios[$butacas[0]] . "€)"; 
 				break;
 			case 2:
-				echo "Anfiteatro-> F:" . $butacas[1] . " B:" . $butacas[2];  
+				echo "Anfiteatro-> F:" . $butacas[1] . " B:" . $butacas[2] . " (" . $precios[$butacas[0]] . "€)"; 
 				break;
 			default:
-				echo "Palco " . ($butacas[0]-2) . "-> B:" . $butacas[2];  
+				echo "Palco " . ($butacas[0]-2) . "-> B:" . $butacas[2] . " (" . $precios[$butacas[0]] . "€)";  
 		}
 		echo "</br>";
+		$total+=$precios[$butacas[0]];
 	}	
+	return $total;
 }
 function realizarReservas($dni){
 	foreach($_SESSION['butacasReservadas'] as $butacas){
@@ -158,5 +163,13 @@ function realizarReservas($dni){
 		reservar($_SESSION['fecha'], $_SESSION['hora'], $butacas[1], $butacas[2], $butacas[0], $dni);
 	}
 	
+}
+
+function obtenerPreciosSecciones(){
+	$resultado = verPrecios();
+	while($v=mysqli_fetch_array($resultado)){
+		$precios[$v['codigo']] = $v['precio'];
+	}
+	return $precios;
 }
 ?>

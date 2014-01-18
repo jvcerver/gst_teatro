@@ -4,7 +4,7 @@
 	
 	/*****Obtenemos la información que necesitaremos*****/
 	//Referencia de la obra
-	$ref = 1; //$_SESSION['refObra'];
+	$ref =1;
 	
 	//Obtener información de la obra
 	$infoObra=verInfoObra($ref);
@@ -131,29 +131,31 @@ function comprobaractivaciones(){
         	<div id="capaobras">
 				<?php if(isset($_SESSION['hora']) && $_SESSION['hora']!=0){
 					$butacasOcupadas[]=null;
+					//Obtener los precios de las sesiones
+					$precios=obtenerPreciosSecciones();
 					//Obtener las butacas reservadas en esa fecha
 					$resultado=verButacasReservadas($fecha,$hora);	
 					while($v=mysqli_fetch_array($resultado)){
-						$butacasOcupadas[]=$v["seccion"].":".$v["fila"].":".$v["numero"];
+						$butacasOcupadas[]=$v['seccion'].":".$v['fila'].":".$v['numero'];
 					}					
 				?>
 					<div id="butacasAnfiteatro">
-						<?php crearAnfiteatro($NUM_FILAS_ANFITEATRO, $NUM_COLUMNAS_ANFITEATRO, $butacasOcupadas);?>
+						<?php crearAnfiteatro($NUM_FILAS_ANFITEATRO, $NUM_COLUMNAS_ANFITEATRO, $butacasOcupadas, $precios[$SECCIONES['ANFITEATRO']]);?>
 					</div>
 					<div id="butacasPlatea">
-						<?php crearPlatea($NUM_FILAS_PLATEA, $NUM_COLUMNAS_PLATEA, $butacasOcupadas);?>
+						<?php crearPlatea($NUM_FILAS_PLATEA, $NUM_COLUMNAS_PLATEA, $butacasOcupadas, $precios[$SECCIONES['PLATEA']]);?>
 					</div>
 					<div id="butacasPalco1">
-						<?php crearPalco($SECCIONES['PALCO1'], $NUM_BUTACAS_PALCO1, $butacasOcupadas);?>
+						<?php crearPalco($SECCIONES['PALCO1'], $NUM_BUTACAS_PALCO1, $butacasOcupadas, $precios[$SECCIONES['PALCO1']]);?>
 					</div>
 					<div id="butacasPalco2">
-						<?php crearPalco($SECCIONES['PALCO2'], $NUM_BUTACAS_PALCO2, $butacasOcupadas);?>
+						<?php crearPalco($SECCIONES['PALCO2'], $NUM_BUTACAS_PALCO2, $butacasOcupadas, $precios[$SECCIONES['PALCO2']]);?>
 					</div>
 					<div id="butacasPalco3">
-						<?php crearPalco($SECCIONES['PALCO3'], $NUM_BUTACAS_PALCO3, $butacasOcupadas);?>
+						<?php crearPalco($SECCIONES['PALCO3'], $NUM_BUTACAS_PALCO3, $butacasOcupadas, $precios[$SECCIONES['PALCO3']]);?>
 					</div>
 					<div id="butacasPalco4">
-						<?php crearPalco($SECCIONES['PALCO4'], $NUM_BUTACAS_PALCO4, $butacasOcupadas);?>
+						<?php crearPalco($SECCIONES['PALCO4'], $NUM_BUTACAS_PALCO4, $butacasOcupadas, $precios[$SECCIONES['PALCO4']]);?>
 					</div>
 				<?php } ?>
             </div>
