@@ -1,6 +1,6 @@
 <?php
 
-#$format = "d-m-o";~
+$format = "o-m-d";
 
 $link = mysqli_connect("localhost", "root", "", "teatro");
 
@@ -72,8 +72,9 @@ function verPases($obra){
     return mysqli_query($link, $sql);
 }
 
-function añadirObra($nombre, $grupo, $uri, $descripcion, $fecha_ini, $fecha_fin){
+function añadirObra($nombre, $grupo, $uri, $descripcion, $fecha_ini, $fecha_fin, $hora){
     global $link;
+    
     $sql = "INSERT INTO `obra`(`nombre`, `grupo`, `uri`, `descripcion`, `f_inicio`, `f_final`) VALUES ('"
             . $nombre . "','"
             . $grupo . "','"
@@ -82,5 +83,18 @@ function añadirObra($nombre, $grupo, $uri, $descripcion, $fecha_ini, $fecha_fin
             . $fecha_ini . "','"
             . $fecha_fin . "')";
     mysqli_query($link, $sql);
+    altaPases($fecha_ini, $fecha_fin, $hora);
+}
+function altaPases($fecha_ini, $fecha_fin, $hora){
+    global $link;
+    global $format;
+    $inicio = strtotime($fecha_ini)/60/60/24;
+    $fin = strtotime($fecha_fin)/60/60/24;
+    $dias = $fin - $inicio;
+    for ($i=0; $i<$dias;$i++){
+        $fecha_alta = date($format, strtotime($fecha_ini)+($i*(60*60*24)));
+        $sql = "INSERT INTO `pase` (`fecha`, `hora`) VALUES ('". $fecha_alta . "','". $hora . "')";
+    mysqli_query($link, $sql);
+    }
 }
 ?>
