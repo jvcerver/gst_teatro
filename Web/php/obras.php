@@ -21,26 +21,36 @@
 <!-- en php posteriormente -->
 	<div id="capacontenedora">
     	<header>
+        <a href="elteatro.php">
         <div class="contenedor" id="uno">
 			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
+			<p class="texto">El teatro</p>        
 		</div>
+        </a>
+        <a href="obras.php">
         <div class="contenedor" id="dos">
 			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
+			<p class="texto">Obras</p>
 		</div>
+        </a>
+        <a href="autores.php">
         <div class="contenedor" id="tres">
 			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
+			<p class="texto">Autores</p>
 		</div>
+        </a>
+        <a href="misreservas.php">
         <div class="contenedor" id="cuatro">
 			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
+			<p class="texto">Mis Reservas</p>
 		</div>
+        </a>
+        <a href="Pops.php">
         <div class="contenedor" id="cinco">
 			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
+			<p class="texto">Pops</p>
 		</div>
+        </a>
         </header>
 		<div id="contenedoraCapaCalendario">
 			<div id="da-slider" class="da-slider">
@@ -81,7 +91,7 @@
 			</script>	
 		</div>
 		<div id="capaFooter">
-        	<img id="imagenCandado"/>	
+        	<a href="admin.php"><div id="../imagenes/imagenCandado"></div></a>	
         </div> 
 	</div> 	
 <body>
