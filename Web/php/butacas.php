@@ -1,5 +1,6 @@
 <?php
 require_once '../Gestion/FuncionesDB.php';
+require_once 'headerAndFooter.php';
 /******DISTRIBUCIÓN DE NUESTRO TEATRO******/
 
 //Secciones
