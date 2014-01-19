@@ -1,3 +1,0 @@
-<?php
-/*por hacer*/
-?>
