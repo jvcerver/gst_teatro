@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document parte reservas*/
+
+#capabutacasReservadas{
+	padding-left:30px;
+	position: relative;
+	top:0px;
+	left:0px;
+	font-size:20px;
+	word-wrap: break-word;
+	text-align:left;
+	color:white;
+	font-style:italic;
+}
+#capaIzquierda{
+	position:absolute;
+	float:left;
+	top:0;
+	left:0;
+	height:100%;
+	width:33%;
+}
+#capaCentral{
+	position:absolute;
+	top:0;
+	left:33%;
+	height:100%;
+	width:34%;
+	overflow:auto;
+}
+#capaDerecha{
+	position:absolute;
+	top:0;
+	left:67%;
+	height:100%;
+	width:33%;
+}
+#capaCartel{
+	position:relative;
+	top:0px;
+	height:75%;
+	width:90%;
+	left:5%;
+}
+h1.titulos, p.info{
+	color:white;
+	padding:15px;
+	word-wrap: break-word;
+	text-align:center;
+}
+#txtDNI{
+	height:50px;
+	width:90%;
+	font-size:50px;
+	margin-left:5%;
+}
+#capaDNI{
+	position:relative;
+	top:90px;
+	left:0;
+	height:200px;
+}
+#btnComprar{
+	position:relative;
+	top:40px;
+	left:200px;
+	font-size:30px;
+}
+#capaInformacion{
+	position:relative;
+	top:0;
+	left:25%;
+	height:60%;
+	width:50%;
+	overflow:auto;
+}
+p.info{
+	color:red;
+	width:97%;
+	font-size:15px;
+}
