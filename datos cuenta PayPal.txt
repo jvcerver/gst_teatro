@@ -1,0 +1,3 @@
+Datos de cuenta PayPal para las reservas:
+	- Correo electrónico: teatroSGE2014@DAM.com 
+	- Contraseña: teatroSGE2014

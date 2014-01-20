@@ -89,6 +89,12 @@ table{
 .pasillo{
 	width:10px;
 }
+h1.titulos, h3.titulos {
+	color:black;
+	padding-top:30px;
+	word-wrap: break-word;
+	text-align:center;
+}
 
 	
 

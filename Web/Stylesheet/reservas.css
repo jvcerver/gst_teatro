@@ -1,16 +1,28 @@
 @charset "utf-8";
 /* CSS Document parte reservas*/
 
-#capabutacasReservadas{
+#capabutacasReservadas, #capabutacasReservadasExito{
 	padding-left:30px;
 	position: relative;
 	top:0px;
 	left:0px;
+	height:54%;
 	font-size:20px;
 	word-wrap: break-word;
 	text-align:left;
-	color:white;
+	color:black;
 	font-style:italic;
+	overflow:auto;
+	background-color:white;
+	border-radius: 10px;
+	border: 2px solid black;
+	margin-right:10px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+#capabutacasReservadasExito{
+	border-radius: 0px;
+	border: 0px;
 }
 #capaIzquierda{
 	position:absolute;
@@ -41,8 +53,10 @@
 	position:relative;
 	top:0px;
 	height:75%;
-	width:90%;
+	width:87%;
 	left:5%;
+	border: 5px solid black;
+	border-radius: 10px;
 }
 
 #txtDNI{
@@ -57,28 +71,42 @@
 	left:0;
 	height:200px;
 }
-#botonDNI{
+#botonDNI, #btnPayPal{
 	position:relative;
 	top:40px;
 	left:150px;
 	font-size:20px;
 }
+#btnPayPal{
+	display:none;
+	left:200px;
+}
 #capaInformacion{
+	background-color:white;
 	position:relative;
 	top:0;
 	left:25%;
 	height:60%;
 	width:50%;
 	overflow:auto;
+	border-radius: 10px;
+	border: 2px solid black;
 }
-h1.titulos, p.info, h4, h5, h6{
+
+h1.titulos, p.info, h4, h5, h6, h3#total{
 	color:black;
 	padding:15px;
 	word-wrap: break-word;
 	text-align:center;
 }
-h4, h5, h6{
+h3#total, h4, h5, h6{
 	padding:3px;
+}
+h3#total{
+	color:red;
+	text-align:right;
+	padding-right:20px;
+	padding-top:5px;
 }
 div.infoMiReserva {
 	width:62%;
@@ -129,4 +157,19 @@ h2.infoDNIMiReserva{
 	width:67%;
 	text-align:center;
 	font-style:italic;
+}
+img#imgExitoCompra, img#imgExitoCompraInvertida{
+	position:absolute;
+	padding:20px;
+	top:50px;
+	left:0px;
+	height:60%;
+	width:20%;
+}
+img#imgExitoCompraInvertida{
+	left:75%;
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
 }

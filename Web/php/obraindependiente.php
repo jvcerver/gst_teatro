@@ -4,8 +4,13 @@
 	
 	/*****Obtenemos la información que necesitaremos*****/
 	//Referencia de la obra
-	$ref = 1; //$_SESSION['refObra'];
-	
+	if(isset($_GET['ref'])){
+		$ref=$_GET['ref'];
+		$_SESSION['ref']=$ref;
+	}
+	else
+		$ref=$_SESSION['ref'];
+
 	//Obtener información de la obra
 	$infoObra=verInfoObra($ref);
 	
@@ -97,6 +102,7 @@ function comprobaractivaciones(){
 		document.getElementById("formEnvio").reservar.disabled=true;
 	}
 	
+	document.getElementById("ref").value="<?=$ref?>";
 	document.getElementById("pase").value="<?=$hora?>";
 	document.getElementById("fecha").value="<?=$fecha?>";
 }
@@ -129,33 +135,76 @@ function comprobaractivaciones(){
         <div id="contenedoraCapaCalendario">
         <!-- butacas here -->
         	<div id="capaobras">
-				<?php if(isset($_SESSION['hora']) && $_SESSION['hora']!=0){
+				<?php 
+				//Obtener los precios de las sesiones
+				$precios=obtenerPreciosSecciones();
+				if(isset($_SESSION['hora']) && $_SESSION['hora']!=0){
 					$butacasOcupadas[]=null;
 					//Obtener las butacas reservadas en esa fecha
 					$resultado=verButacasReservadas($fecha,$hora);	
 					while($v=mysqli_fetch_array($resultado)){
-						$butacasOcupadas[]=$v["seccion"].":".$v["fila"].":".$v["numero"];
+						$butacasOcupadas[]=$v['seccion'].":".$v['fila'].":".$v['numero'];
 					}					
 				?>
 					<div id="butacasAnfiteatro">
-						<?php crearAnfiteatro($NUM_FILAS_ANFITEATRO, $NUM_COLUMNAS_ANFITEATRO, $butacasOcupadas);?>
+						<?php crearAnfiteatro($NUM_FILAS_ANFITEATRO, $NUM_COLUMNAS_ANFITEATRO, $butacasOcupadas, $precios[$SECCIONES['ANFITEATRO']]);?>
 					</div>
 					<div id="butacasPlatea">
-						<?php crearPlatea($NUM_FILAS_PLATEA, $NUM_COLUMNAS_PLATEA, $butacasOcupadas);?>
+						<?php crearPlatea($NUM_FILAS_PLATEA, $NUM_COLUMNAS_PLATEA, $butacasOcupadas, $precios[$SECCIONES['PLATEA']]);?>
 					</div>
 					<div id="butacasPalco1">
-						<?php crearPalco($SECCIONES['PALCO1'], $NUM_BUTACAS_PALCO1, $butacasOcupadas);?>
+						<?php crearPalco($SECCIONES['PALCO1'], $NUM_BUTACAS_PALCO1, $butacasOcupadas, $precios[$SECCIONES['PALCO1']]);?>
 					</div>
 					<div id="butacasPalco2">
-						<?php crearPalco($SECCIONES['PALCO2'], $NUM_BUTACAS_PALCO2, $butacasOcupadas);?>
+						<?php crearPalco($SECCIONES['PALCO2'], $NUM_BUTACAS_PALCO2, $butacasOcupadas, $precios[$SECCIONES['PALCO2']]);?>
 					</div>
 					<div id="butacasPalco3">
-						<?php crearPalco($SECCIONES['PALCO3'], $NUM_BUTACAS_PALCO3, $butacasOcupadas);?>
+						<?php crearPalco($SECCIONES['PALCO3'], $NUM_BUTACAS_PALCO3, $butacasOcupadas, $precios[$SECCIONES['PALCO3']]);?>
 					</div>
 					<div id="butacasPalco4">
-						<?php crearPalco($SECCIONES['PALCO4'], $NUM_BUTACAS_PALCO4, $butacasOcupadas);?>
+						<?php crearPalco($SECCIONES['PALCO4'], $NUM_BUTACAS_PALCO4, $butacasOcupadas, $precios[$SECCIONES['PALCO4']]);?>
 					</div>
-				<?php } ?>
+				<?php } 
+				else{ ?>
+					<div id="butacasAnfiteatro">
+						<h1 class="titulos">
+							Anfiteatro <br/>
+							<?php echo $precios[$SECCIONES['ANFITEATRO']]."€";?>
+						</h1>
+					</div>
+					<div id="butacasPlatea">
+						<h1 class="titulos">
+							Platea <br/>
+							<?php echo $precios[$SECCIONES['PLATEA']]."€";?>
+						</h1>
+					</div>
+					<div id="butacasPalco1">
+						<h3 class="titulos">
+							Palco 1 <br/>
+							<?php echo $precios[$SECCIONES['PALCO1']]."€";?>
+						</h3>
+					</div>
+					<div id="butacasPalco2">
+						<h3 class="titulos">
+							Palco 2 <br/>
+							<?php echo $precios[$SECCIONES['PALCO2']]."€";?>
+						</h3>
+					</div>
+					<div id="butacasPalco3">
+						<h3 class="titulos">
+							Palco 3 <br/>
+							<?php echo $precios[$SECCIONES['PALCO3']]."€";?>
+						</h3>
+					</div>
+					<div id="butacasPalco4">
+						<h3 class="titulos">
+							Palco 4 <br/>
+							<?php echo $precios[$SECCIONES['PALCO4']]."€";?>
+						</h3>
+					</div>
+				<?php 
+				}
+				?>
             </div>
         	<div id="capacalendarioyhora">  
 				<div id="capatituloobra">
@@ -197,7 +246,7 @@ function comprobaractivaciones(){
 				</form>  
 				<form id="formEnvio" method="post" action="reserva.php">
 	                <div id="capabutton">
-						<input type="hidden" name="hdnRef" value="<?=$ref?>"/>
+						<input type="hidden" name="hdnRef" value="<?=$ref?>" id="ref"/>
 	            		<input type="submit" disabled="true" name="reservar" value="Comprar"/>
                 	</div>
 				</form>      		       	      
