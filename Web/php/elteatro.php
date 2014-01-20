@@ -1,4 +1,4 @@
-<?php	
+﻿<?php	
 	require_once 'headerAndFooter.php';
 ?>
 	
@@ -19,10 +19,10 @@
         <br />
         <h2>Historia</h2> 
         <br /><br />
-        <h3> Este teatro, nacido de un trabajo del ciclo de dam fué propuesto en la clase de SGE para entregar el dia 24 de enero del 2014, por lo que las 
-instalaciones son muy novedosas, hasta el punto, de que no existen actualmente, pero si quiere participar para su construccion,compre una entrada y participe en el sorteo de ver
-        una pelicula cuando aparezca un estreno. <br /><br />
-Nota: La prevision del estreno es para mediados del 3021.
+        <h3> Este teatro, nacido de un trabajo del ciclo de dam fue propuesto en la clase de SGE para entregar el día 24 de enero del 2014, por lo que las 
+instalaciones son muy novedosas, hasta el punto, de que no existen actualmente, pero si quiere participar para su construcción,compre una entrada y participe en el sorteo de ver
+        una obra cuando aparezca un estreno. <br /><br />
+Nota: La previsión del estreno es para mediados del 3021.
                     	
         </div>
 		<div id="capaFooter">
