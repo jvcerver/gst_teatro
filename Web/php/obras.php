@@ -1,4 +1,5 @@
 <?php session_start();
+	require_once 'headerAndFooter.php';
 	if(isset($_SESSION['ref']))
 		unset($_SESSION['ref']);
 	session_destroy();
@@ -21,26 +22,7 @@
 <!-- en php posteriormente -->
 	<div id="capacontenedora">
     	<header>
-        <div class="contenedor" id="uno">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
-        <div class="contenedor" id="dos">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
-        <div class="contenedor" id="tres">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
-        <div class="contenedor" id="cuatro">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
-        <div class="contenedor" id="cinco">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
+			<?php cabecera(); ?>
         </header>
 		<div id="contenedoraCapaCalendario">
 			<div id="da-slider" class="da-slider">
@@ -81,7 +63,7 @@
 			</script>	
 		</div>
 		<div id="capaFooter">
-        	<img id="imagenCandado"/>	
+        	<?php pieDePagina(); ?>
         </div> 
 	</div> 	
 <body>
