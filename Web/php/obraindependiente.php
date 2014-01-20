@@ -23,6 +23,16 @@
 	$ultimoDia=explode('-', $ultimoDia);
 	$ultimoDia = $ultimoDia[0].$ultimoDia[1].$ultimoDia[2];
 	
+	//Primer día del espectáculo activo en el calendario (formato YYYYMMDD) - Hoy en caso de que la fecha de inico de la obra sea anterior a hoy
+	$primerDiaActivo=$infoObra["f_inicio"];
+	if(strtotime($primerDiaActivo) < strtotime(date("Y-m-d"))){
+		$primerDiaActivo=date("Ymd");
+	}
+	else{
+		$primerDiaActivo=explode('-', $primerDiaActivo);
+		$primerDiaActivo = $primerDiaActivo[0].$primerDiaActivo[1].$primerDiaActivo[2];
+	}
+
 	//Fecha
 	if(isset($_SESSION['fecha']))
 		$fecha = $_SESSION['fecha'];
@@ -198,7 +208,7 @@ function comprobaractivaciones(){
 			  	  	var calendario = Calendar.setup({
 			  	      	cont          : "capafechas",
 			  	      	bottomBar	  : false,
-			  	  		min: <?=date("Ymd");?>, //Primer día seleccionable
+			  	  		min: <?=$primerDiaActivo;?>, //Primer día seleccionable
 			  	  		max: <?=$ultimoDia;?>, 	//Último día seleccionable
 			  			onSelect      : function() {
 			              	var fecha = document.getElementById("fecha");

@@ -70,11 +70,11 @@ function activarBoton(){
 				$infoReservas = verMisReservas($dni);
 			?>	
 				<div id="capaIzquierda">
-					<h1 class="titulos">Reservas pasadas</h1>
+					<h1 class="titulos">Compras pasadas</h1>
 					<?php mostrarMisReservas($infoReservas, "comprobarFechaPasada");?>
 				</div> 
 				<div id="capaCentral">
-					<h1 class="titulos">Reservas actuales</h1>
+					<h1 class="titulos">Compras actuales</h1>
 					<?php mostrarMisReservas($infoReservas, "comprobarFechaActual");?>
 				</div> 
 			<?php }
