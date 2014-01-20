@@ -1,6 +1,7 @@
 <?php session_start();
 	require_once 'butacas.php';
 	require_once '../Gestion/FuncionesDB.php';
+	require_once 'headerAndFooter.php';
 	
 	/*****Obtenemos la información que necesitaremos*****/
 	//Referencia de la obra
@@ -31,26 +32,7 @@ function activarBoton(){
 <body>
 	<div id="capacontenedora">
     	<header>
-        <div class="contenedor" id="uno">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
-        <div class="contenedor" id="dos">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
-        <div class="contenedor" id="tres">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
-        <div class="contenedor" id="cuatro">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
-        <div class="contenedor" id="cinco">
-			<img class="icon" src="../imagenes/icon5.png">
-			<p class="texto">home</p>
-		</div>
+        	<?php cabecera(); ?>
         </header>
         <div id="contenedoraCapaCalendario">
 			<div id="capaIzquierda">
@@ -93,7 +75,7 @@ function activarBoton(){
 				     	  		       	               	         
         </div>
 		<div id="capaFooter">
-        	<img id="imagenCandado"/>	
+        	<?php pieDePagina(); ?>
         </div>   
 	</div>
 </body>
