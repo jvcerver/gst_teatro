@@ -1,5 +1,9 @@
 <?php	
 	require_once 'headerAndFooter.php';	
+	if(isset($_POST['entrar'])){
+		if($_POST['user']=="admin" && $_POST['pass']=="admin")
+			header("Location: gestion.php");
+	}
 ?>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,7 +29,7 @@
             	<input type="password" name="pass"/>
                 </div>
                 <div id="submit">
-            	<input type="submit" value="Entrar"/>
+            	<input type="submit" value="Entrar" name="entrar"/>
                 </div>
             </form>	
         </div>
