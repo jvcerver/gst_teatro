@@ -1,32 +1,5 @@
 @charset "utf-8";
 /* CSS Document */
-/*Princpial quitar la primera*/
-#capacontenedoraobrasquery{	
-	background-color:#99F;
-	position:relative;
-	height:600px;
-	width:300px;
-	margin-left:-150px;	
-	left:50%;	
-}
-#capaobraindividual{
-	background-color:red;
-	position:relative;
-	height:150px;
-	width:150px;
-	margin-left:-75px;	
-	left:50%;	
-	}
-#imagenobraquery{
-	background:#CFF;
-	width:30px;
-	height:30px;
-	/*src:"";*/
-}
-/*_____*/
-
-
-
 /*Slider*/
 .da-slider{
 	width: 100%;
@@ -34,7 +7,6 @@
 	height: 350px;
 	position: relative;
 	overflow: hidden;
-	background: transparent url(../imagenes/waves.gif) repeat 0% 0%;
 	-webkit-transition: background-position 1s ease-out 0.3s;
 	-moz-transition: background-position 1s ease-out 0.3s;
 	-o-transition: background-position 1s ease-out 0.3s;

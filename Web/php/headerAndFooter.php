@@ -35,6 +35,6 @@ function cabecera(){
 }
 function pieDePagina(){
 	?>
-	<h3>© Copyright DAM all rights reserved</h3><a href="php/admin.php"><img id="imagenCandado" src="imagenes/candado.png"/></div></a>	
+	<h3>&copy; Copyright DAM all rights reserved</h3><a href="../php/admin.php"><img id="imagenCandado" src="../imagenes/candado.png"/></div></a>	
 <?php }
 ?>
