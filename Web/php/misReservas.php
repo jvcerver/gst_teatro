@@ -21,10 +21,11 @@
 			if($funcion($v['fecha'], $v['hora'])){
 				$butaca = $v['seccion'].":".$v['fila'].":".$v['numero'];
 				$numReservas++;
+				$infoObra=mysqli_fetch_array(verObraReservada($v['no_entrada']));
 				echo "<div class='miReserva'>";
-					echo "<img class='imgMiReserva' src='../imagenes/butacaLibre.png' alt='imagen obra'/>";
+					echo "<img class='imgMiReserva' src='../imagenes/obras/".$infoObra['uri']."' alt='imagen obra'/>";
 					echo "<p class='codigoMiReserva'> Código ". $v['no_entrada'] . "</p>";
-					echo "<div class='infoMiReserva'><h4>Título de la obra</h4>";
+					echo "<div class='infoMiReserva'><h4>".$infoObra['nombre']."</h4>";
 						echo "<h6>" . $v['fecha'] . " (" . $v['hora'] . ")</h6>";
 						echo "<h6>";
 						mostrarReservaIndividual($butaca, $precios);
