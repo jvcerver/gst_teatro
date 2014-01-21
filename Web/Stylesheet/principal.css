@@ -20,6 +20,9 @@ body{
 	background-image:url(../imagenes/fondoraro.png);
 	background-size: 100%;
 }
+form#altaObra p, label{
+    color:white;
+}
 #capacontenedora{
 	margin-top: 0px;
 	margin-right: 0px;
