@@ -40,15 +40,15 @@ if (isset($_POST['enviar'])){
                 <p>Grupo de teatro</p>
                 <input type="text" name="grupo" size="50"/>
                 <label for="archivo">Archivo de imagen</label>
-                <input type="file" name="file"/>
+                <input type="file" name="file" />
                 <p>Descripcion</p>
                 <textarea rows="5" cols="50" name="descripcion" form="altaObra"></textarea></br> <!--esto llega como descripcion-->
                 <label for="f_ini">fecha de inicio</label>
-                       <input name="f_ini"type="date"/>
+                <input name="f_ini"type="date" value="AAAA/MM/DD"onclick='this.value = ""'/>
                 <label for="f_fin">fecha de fin</label>
-                       <input name="f_fin"type="date"/>
+                <input name="f_fin"type="date" value="AAAA/MM/DD"onclick='this.value = ""'/>
                 <label for="hora">hora del pase</label>
-                       <input name="hora"type="time"/>
+                       <input name="hora"type="time"value="hh:mm"onclick='this.value = ""'/>
                        <input type="submit" name="enviar" value="Enviar"/>
             </form>
         </div>
