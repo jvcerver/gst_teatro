@@ -24,7 +24,7 @@
 			<img id="imgExitoCompra" src="../imagenes/exitoCompra.png" alt="éxito reserva" />
 			<img id="imgExitoCompraInvertida" src="../imagenes/exitoCompra.png" alt="éxito reserva" />
 			<div id="capaInformacion">
-				<h1 class="titulos">
+				<h1 class="titulosBlack">
 					<?php
 						echo $_SESSION['fecha'] . " (" . $_SESSION['hora'] . ")";
 					?>

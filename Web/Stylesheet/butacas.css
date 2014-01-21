@@ -82,7 +82,7 @@ table{
 	padding:1px;
 }
 .secciones{
-	color:pink;
+	color:rgba(255,255,255,0.8);
 	margin:0px;
 	padding:0px;
 }
@@ -90,7 +90,7 @@ table{
 	width:10px;
 }
 h1.titulos, h3.titulos {
-	color:black;
+	color:rgba(255,255,255,0.8);
 	padding-top:30px;
 	word-wrap: break-word;
 	text-align:center;

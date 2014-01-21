@@ -21,10 +21,11 @@
 			if($funcion($v['fecha'], $v['hora'])){
 				$butaca = $v['seccion'].":".$v['fila'].":".$v['numero'];
 				$numReservas++;
+				$infoObra=mysqli_fetch_array(verObraReservada($v['no_entrada']));
 				echo "<div class='miReserva'>";
-					echo "<img class='imgMiReserva' src='../imagenes/butacaLibre.png' alt='imagen obra'/>";
+					echo "<img class='imgMiReserva' src='../imagenes/obras/".$infoObra['uri']."' alt='imagen obra'/>";
 					echo "<p class='codigoMiReserva'> Código ". $v['no_entrada'] . "</p>";
-					echo "<div class='infoMiReserva'><h4>Título de la obra</h4>";
+					echo "<div class='infoMiReserva'><h4>".$infoObra['nombre']."</h4>";
 						echo "<h6>" . $v['fecha'] . " (" . $v['hora'] . ")</h6>";
 						echo "<h6>";
 						mostrarReservaIndividual($butaca, $precios);
@@ -70,11 +71,11 @@ function activarBoton(){
 				$infoReservas = verMisReservas($dni);
 			?>	
 				<div id="capaIzquierda">
-					<h1 class="titulos">Reservas pasadas</h1>
+					<h1 class="titulos">Compras pasadas</h1>
 					<?php mostrarMisReservas($infoReservas, "comprobarFechaPasada");?>
 				</div> 
 				<div id="capaCentral">
-					<h1 class="titulos">Reservas actuales</h1>
+					<h1 class="titulos">Compras actuales</h1>
 					<?php mostrarMisReservas($infoReservas, "comprobarFechaActual");?>
 				</div> 
 			<?php }

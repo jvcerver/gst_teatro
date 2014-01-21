@@ -29,19 +29,21 @@
 				<?php
 					require_once '../Gestion/FuncionesDB.php';
 					$obras=verObras();
-					while($v=mysqli_fetch_array($obras)){?>
-						<div class="da-slide">
-							<h2><?=$v['nombre']?></h2>
-							<p>
-								Del <?=$v['f_inicio']?> al <?=$v['f_final']?><br/>
-								<?=$v['grupo']?><br/>
-								<?=$v['descripcion']?>
-							</p>  
-							 <!--Pasarle también la referencia-->
-							<a href="obraindependiente.php?ref=<?=$v['ref']?>" class="da-link">Comprar</a>
-							<div class="da-img"><img src="../imagenes/obras/<?=$v['uri']?>" height="200px" width="200px" alt="imagen cartel" /></div>
-						</div>
-					<?php 
+					while($v=mysqli_fetch_array($obras)){
+						if(strtotime($v['f_final']) > strtotime(date("Y-m-d"))){?>
+							<div class="da-slide">
+								<h2><?=$v['nombre']?></h2>
+								<p>
+									Del <?=$v['f_inicio']?> al <?=$v['f_final']?><br/>
+									<?=$v['grupo']?><br/>
+									<?=$v['descripcion']?>
+								</p>  
+								 <!--Pasarle también la referencia-->
+								<a href="obraindependiente.php?ref=<?=$v['ref']?>" class="da-link">Comprar</a>
+								<div class="da-img"><img src="../imagenes/obras/<?=$v['uri']?>" height="200px" width="200px" alt="imagen cartel" /></div>
+							</div>
+					<?php
+						}
 					}
 				?>
 				<nav class="da-arrows">

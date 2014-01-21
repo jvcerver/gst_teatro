@@ -63,7 +63,7 @@
 .da-slide p{
 	width: 45%;
 	top: 155px;
-	color: #916c05;
+	color:rgba(255,255,255,0.8);
 	font-size: 18px;
 	line-height: 26px;
 	height: 80px;
@@ -85,7 +85,7 @@
 	top: 270px; /*depends on p height*/
 	border-radius: 30px;
 	box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
-	color: #fff;
+	color: rgba(255,255,255,0.8);
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 	border: 8px solid rgba(255,255,255,0.8);
 	padding: 2px 20px 0px;
@@ -114,7 +114,7 @@
 	width: 12px;
 	height: 12px;
 	border-radius: 50%;
-	background: #e4b42d;
+	background: rgba(255,255,255,0.8);
 	margin: 3px;
 	cursor: pointer;
 	box-shadow: 
@@ -148,7 +148,7 @@
 	height: 30px;
 	width: 30px;
 	border-radius: 50%;
-	background: #e4b42d;
+	background: rgba(255,255,255,0.8);
 	cursor: pointer;
 	z-index: 2000;
 	opacity: 0;
