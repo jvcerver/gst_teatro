@@ -356,4 +356,17 @@ div#entradaAdmin p{
 	-moz-transform : rotate(360deg);	
 	-o-transform : rotate(360deg);	
 	-webkit-transform : rotate(360deg);	
-	}
+}
+#capaGestion{
+	position:absolute;
+	width:70%;
+	left:18%;
+	top:20%;
+}
+#btnAlta{
+	position: absolute;
+	left:80%;
+	top:120%;
+	height:30px;
+	width:80px;
+}
