@@ -34,23 +34,28 @@ if (isset($_POST['enviar'])){
         </header>
         <div id="contenedoraCapaCalendario"> 
             <!--aquí va el formulario de gestion-->
-            <form id="altaObra" action="" method="post" enctype="multipart/form-data">
-                <p>Nombre de la obra</p>
-                <input type="text" name="nombre" size="50"/>
-                <p>Grupo de teatro</p>
-                <input type="text" name="grupo" size="50"/>
-                <label for="archivo">Archivo de imagen</label>
-                <input type="file" name="file" />
-                <p>Descripcion</p>
-                <textarea rows="5" cols="50" name="descripcion" form="altaObra"></textarea></br> <!--esto llega como descripcion-->
-                <label for="f_ini">fecha de inicio</label>
-                <input name="f_ini"type="date" value="AAAA/MM/DD"onclick='this.value = ""'/>
-                <label for="f_fin">fecha de fin</label>
-                <input name="f_fin"type="date" value="AAAA/MM/DD"onclick='this.value = ""'/>
-                <label for="hora">hora del pase</label>
-                       <input name="hora"type="time"value="hh:mm"onclick='this.value = ""'/>
-                       <input type="submit" name="enviar" value="Enviar"/>
-            </form>
+			<br/>
+			<h2>Formulario alta de nueva obra</h2>
+			<div id="capaGestion">
+	            <form id="altaObra" action="" method="post" enctype="multipart/form-data">
+	                <p>Nombre de la obra</p>
+	                <input type="text" name="nombre" size="50"/>
+	                <p>Grupo de teatro</p>
+	                <input type="text" name="grupo" size="50"/>
+	                <label for="archivo">Archivo de imagen</label>
+	                <input type="file" name="file" />
+	                <p>Descripcion</p>
+	                <textarea rows="5" cols="50" name="descripcion" form="altaObra"></textarea></br> <!--esto llega como descripcion-->
+	                <label for="f_ini">fecha de inicio</label>
+	                <input name="f_ini"type="date" value="AAAA/MM/DD"onclick='this.value = ""'/>
+	                <label for="f_fin">fecha de fin</label>
+	                <input name="f_fin"type="date" value="AAAA/MM/DD"onclick='this.value = ""'/>
+	                <label for="hora">hora del pase</label>
+	                       <input name="hora"type="time"value="hh:mm"onclick='this.value = ""'/>
+						   <br/>
+	                       <input type="submit" id="btnAlta" name="enviar" value="Enviar"/>
+	            </form>
+			</div>
         </div>
         
 		<div id="capaFooter">
