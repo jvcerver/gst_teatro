@@ -2,6 +2,10 @@
 	require_once 'butacas.php';
 	require_once '../Gestion/FuncionesDB.php';
 	require_once 'headerAndFooter.php';
+	require_once 'funcionesPDF.php';
+	
+	if(isset($_POST['Imprimir']))
+		imprmirEntrada($_POST['codigo'], $_POST['fecha'], $_POST['hora'], $_POST['butaca']);
 	
 	
 	function comprobarFechaPasada($fecha, $hora){
@@ -30,6 +34,13 @@
 						echo "<h6>";
 						mostrarReservaIndividual($butaca, $precios);
 						echo "</h6>";
+						echo "<form method='post' action=''>";
+							echo "<input type='hidden' name='codigo' value='".$v['no_entrada']."'/>";
+							echo "<input type='hidden' name='fecha' value='".$v['fecha']."'/>";
+							echo "<input type='hidden' name='hora' value='".$v['hora']."'/>";
+							echo "<input type='hidden' name='butaca' value='".$butaca."'/>";
+							echo "<input type='submit' value='Imprimir' name='Imprimir'/>";
+						echo "</form>";
 					echo "</div>";	
 				echo "</div>";
 			}
@@ -78,6 +89,7 @@ function activarBoton(){
 					<h1 class="titulos">Compras actuales</h1>
 					<?php mostrarMisReservas($infoReservas, "comprobarFechaActual");?>
 				</div> 
+				
 			<?php }
 			else{
 				echo "<h2 class='infoDNIMiReserva'>Para consultar sus reservas <br/> introduzca su DNI en el recuadro de la derecha</h2>";
