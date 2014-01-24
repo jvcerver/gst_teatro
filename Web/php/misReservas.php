@@ -39,7 +39,7 @@
 							echo "<input type='hidden' name='fecha' value='".$v['fecha']."'/>";
 							echo "<input type='hidden' name='hora' value='".$v['hora']."'/>";
 							echo "<input type='hidden' name='butaca' value='".$butaca."'/>";
-							echo "<input type='submit' value='Imprimir' name='Imprimir'/>";
+							echo "<input type='submit' id='btnImprimir' value='Imprimir' name='Imprimir'/>";
 						echo "</form>";
 					echo "</div>";	
 				echo "</div>";

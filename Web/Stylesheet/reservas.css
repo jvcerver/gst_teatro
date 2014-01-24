@@ -179,3 +179,8 @@ img#imgExitoCompraInvertida{
 	-webkit-transform: scaleX(-1);
 	transform: scaleX(-1);
 }
+#btnImprimir{
+	top: 4px;
+	left:100px;
+	position:relative;
+}
